@@ -2,63 +2,46 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>Nuran Ferhan | Ana Sayfa</title>
+    <title>CSS Temel Ödevi</title>
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-    <header>
-        <h1>Nuran Ferhan</h1>
-        <p>Bilgisayar Mühendisliği | Web Programlama Öğrencisi</p>
-    </header>
 
-    <nav>
-        <ul>
-            <li><a href="index.html">Ana Sayfa</a></li>
-            <li><a href="about.html">Hakkımda</a></li>
-            <li><a href="interests.html">İlgi Alanlarım</a></li>
-            <li><a href="contact.html">İletişim</a></li>
-        </ul>
-    </nav>
+    <div class="page-wrapper">
+        <div class="container">
+            <nav class="navbar">
+                <h1 class="logo">CSS Temel Ödevi</h1>
+                <ul class="nav-links">
+                    <li><a href="#" class="active">Ana Sayfa</a></li>
+                    <li><a href="#">Hakkında</a></li>
+                    <li><a href="#">Hizmetler</a></li>
+                    <li><a href="#">İletişim</a></li>
+                </ul>
+            </nav>
 
-    <main>
-        <section>
-            <h2>Hoş Geldiniz</h2>
-            <p>Bu web sitesi, <strong>Web Programlama</strong> dersi kapsamında hazırlanmış örnek bir kişisel tanıtım sayfasıdır. Amaç, HTML'in temel etiketlerini ve sayfa yapısını öğrenmektir.</p>
-            <p>Daha fazla bilgi için <em>Hakkımda</em> sayfasını ziyaret edebilirsiniz.</p>
-        </section>
+            <header class="intro-text">
+                <p>Verilen benzer bir düzenle basit bir web sayfası oluşturun. CSS'in temel özelliklerini (<span>display</span>, <span>width</span>, <span>height</span>, <span>margin</span>, <span>padding</span>, <span>border</span>, selector) uygulayın. Sadece HTML5 + CSS3 kullanın, hazır framework kullanmak yasak (Bootstrap, Tailwind vb.).</p>
+            </header>
 
-        <section id="hizli-bilgi">
-            <h2>Hızlı Bilgiler</h2>
-            <ul>
-                <li>Üniversite: Marmara Üniversitesi</li>
-                <li>Bölüm: Bilgisayar Mühendisliği</li>
-                <li>İlgi Alanı: Web Teknolojileri</li>
-            </ul>
-        </section>
+            <main class="content-section">
+                <article class="box box-yellow">
+                    <h3>İçerik</h3>
+                    <p>Bu alanda örnek içerik metinleri bulunmaktadır. Css özellikleriyle bu metinler arasında <strong>boşluklar</strong> (line-height) ve hizalamalar (text-align) düzenlelleririz.</p>
+                    <p>Önce CSS ile kutuları / alanlari yan yana getirmeyi, ardından alt alta yerleştirmeyi öğrendik. Şimdi ise CSS seçicilerini kullanarak grup ve hiyerarşik seçimler yapmayı göreceğiz.</p>
+                </article>
 
-        <section>
-            <h2>Öğrenme Hedeflerim</h2>
-            <ol>
-                <li>HTML temellerini öğrenmek</li>
-                <li>CSS ile sayfa tasarlamak</li>
-                <li>JavaScript ile etkileşim eklemek</li>
-                <li>ASP.NET Core ile dinamik site geliştirmek</li>
-            </ol>
-        </section>
+                <aside class="box box-blue">
+                    <h3>Yan Menü / Bilgi</h3>
+                    <p>Bu alan yan menü veya bilgi kısmıdır. CSS ile genişlik (width), yükseklik (height), kenar boşlukları (margin/padding) ve kenarlık (border) özelliklerini kullanarak düzenleyebiliriz.</p>
+                    <p>Öğrendiklerimizi hiyerarşik ve grup seçicilerle uygulayıp farkii bölümlere stil verebiliriz.</p>
+                </aside>
+            </main>
 
-        <section id="hedef">
-            <h2>Faydalı Bağlantılar</h2>
-            <p>Aşağıdaki kaynaklar web geliştirme öğrenirken faydalı olabilir:</p>
-            <ul>
-                <li><a href="https://developer.mozilla.org/tr/" target="_blank">MDN Web Docs</a></li>
-                <li><a href="https://www.w3schools.com/" target="_blank">W3Schools</a></li>
-                <li><a href="https://github.com/" target="_blank">GitHub</a></li>
-            </ul>
-        </section>
-    </main>
+            <footer class="footer">
+                <p>&copy; 2026 CSS Temel Örnek. Bu sayfa basit bir HTML+CSS alıştırmasıdır.</p>
+            </footer>
+        </div>
+    </div>
 
-    <footer>
-        <hr>
-        <p>&copy; 2026 Nuran Ferhan | Web Programlama Ders Portfolyosu</p>
-    </footer>
 </body>
 </html>
