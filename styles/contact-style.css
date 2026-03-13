@@ -1,0 +1,91 @@
+.contact-container {
+    width: 600px;
+    margin: 40px auto;
+    padding: 30px; 
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fff;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.contact-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+.contact-container label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #555;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select,
+textarea {
+    width: 100%; 
+    padding: 12px; 
+    margin-bottom: 20px; 
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; 
+}
+
+.radio-group, .checkbox-group {
+    background-color: #fcfcfc;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #f0f0f0;
+    margin-bottom: 20px;
+}
+
+.radio-group label, .checkbox-group label {
+    font-weight: normal;
+    display: block;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+.radio-group input, .checkbox-group input {
+    width: auto;
+    margin-right: 10px;
+}
+
+.file-input {
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.button-container {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-gonder, .btn-temizle {
+    flex: 1;
+    padding: 12px 20px; 
+    border: none; 
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.btn-gonder {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-temizle {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-gonder:hover, .btn-temizle:hover {
+    opacity: 0.9;
+}
