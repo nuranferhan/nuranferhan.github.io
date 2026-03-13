@@ -2,50 +2,58 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>İletişim - Nuran Ferhan</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İletişim - Özgeçmiş Sayfası</title>
+    <link rel="stylesheet" href="styles/contact-style.css">
 </head>
 <body>
-    <header>
-        <h1>İletişim</h1>
-        <p>Benimle iletişime geçebileceğiniz bilgiler</p>
-    </header>
 
-    <nav>
-        <ul>
-            <li><a href="index.html">Ana Sayfa</a></li>
-            <li><a href="about.html">Hakkımda</a></li>
-            <li><a href="interests.html">İlgi Alanlarım</a></li>
-            <li><a href="contact.html">İletişim</a></li>
-        </ul>
-    </nav>
+    <div class="contact-container">
+        <h2>Detaylı İletişim Formu</h2>
+        
+        <form action="#" method="post">
+            <label for="ad-soyad">Ad Soyad:</label>
+            <input type="text" id="ad-soyad" name="ad-soyad" placeholder="Örn: Nuran Ferhan Kasap" required>
 
-    <main>
-        <section>
-            <h2>İletişim Bilgilerim</h2>
-            <ul>
-                <li><strong>E-posta:</strong> <a href="mailto:nuranferhan@gmail.com">nuranferhan@gmail.com</a></li>
-                <li><strong>Telefon:</strong> <a href="tel:+90 555 111 22 33"> +90 555 111 22 33</a></li>
-                <li><strong>GitHub:</strong> <a href="https://github.com/nuranferhan" target="_blank">GitHub Profilim</a></li>
-                <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/nuran-ferhan/?originalSubdomain=tr" target="_blank">LinkedIn Profilim</a></li>
-            </ul>
-        </section>
+            <label for="email">E-posta Adresi:</label>
+            <input type="email" id="email" name="email" placeholder="ornek@mail.com" required>
 
-        <section>
-            <h2>Sık Sorulan Sorular</h2>
-            
-            <h4>Mesajlara ne kadar sürede dönüş yapıyorsunuz?</h4>
-            <p>Genellikle 24 saat içinde e-posta yoluyla dönüş yapıyorum.</p>
+            <label for="sifre">Başvuru Takip Şifresi:</label>
+            <input type="password" id="sifre" name="sifre" placeholder="Şifrenizi girin">
 
-            <h4>Projelerde iş birliğine açık mısınız?</h4>
-            <p>Evet, özellikle eğitim ve açık kaynaklı projelerde iş birliklerine açığım.</p>
-        </section>
+            <label>İletişim Tercihi:</label>
+            <div class="radio-group">
+                <label><input type="radio" name="tercih" value="email"> Bana e-posta ile ulaşın</label>
+                <label><input type="radio" name="tercih" value="telefon"> Bana telefonla ulaşın</label>
+            </div>
 
-        <p><a href="index.html">&larr; Ana sayfaya geri dön</a></p>
-    </main>
+            <label>İlgi Alanları / Yetenekler:</label>
+            <div class="checkbox-group">
+                <label><input type="checkbox" name="yetenek" value="html"> HTML</label>
+                <label><input type="checkbox" name="yetenek" value="css"> CSS</label>
+                <label><input type="checkbox" name="yetenek" value="algoritma"> Algoritma</label>
+            </div>
 
-    <footer>
-        <hr>
-        <p>&copy; 2026 Nuran Ferhan | Web Programlama Dersi</p>
-    </footer>
+            <label for="konu">Konu:</label>
+            <select id="konu" name="konu">
+                <option value="">Lütfen bir konu seçin...</option>
+                <option value="is-teklifi">İş Teklifi</option>
+                <option value="soru">Soru</option>
+                <option value="geri-bildirim">Geri Bildirim</option>
+            </select>
+
+            <label for="dosya">Özgeçmiş (CV) veya Fotoğraf Yükle:</label>
+            <input type="file" id="dosya" name="dosya" class="file-input">
+
+            <label for="mesaj">Mesajınız:</label>
+            <textarea id="mesaj" name="mesaj" rows="5" placeholder="Detaylı mesajınızı buraya yazabilirsiniz..."></textarea>
+
+            <div class="button-container">
+                <button type="submit" class="btn-gonder">Gönder</button>
+                <button type="reset" class="btn-temizle">Temizle</button>
+            </div>
+        </form>
+    </div>
+
 </body>
 </html>
