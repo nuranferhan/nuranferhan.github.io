@@ -1,132 +1,149 @@
-/* Genel Sıfırlama */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Sayfa Ana Kapsayıcısı */
 .wrapper {
     display: flex;
-    flex-direction: column; /* Dikey yerleşim */
-    height: 100vh; /* Ekran yüksekliğine sığdır */
-    width: 100%;
-    overflow: hidden; /* Taşmaları engellemek için */
-    background-color: #f5f5f5;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #f0f0f0;
+    padding: 10px;
+    gap: 10px;
 }
 
-/* Ortak Buton Stilleri */
-.btn, .btn-small {
-    background-color: #7facf4;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-/* 1) Navbar */
 .navbar {
     height: 10vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 5%;
-    background-color: #fff;
-    border-bottom: 1px solid #ddd;
+    background-color: #ffffff;
+    padding: 0 30px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
 }
 
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 20px;
+    gap: 25px;
 }
 
 .nav-links a {
     text-decoration: none;
-    color: #333;
+    color: #555;
+    font-size: 14px;
 }
 
-/* 2) Hero Bölümü */
 .hero {
     height: 30vh;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: stretch; /* Görsel kutusu yüksekliği esnesin */
-    padding: 20px 5%;
-    background-color: #fff;
-    border-bottom: 1px solid #eee;
+    align-items: stretch;
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    gap: 30px;
 }
 
-.hero-content {
+.hero-text {
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 10px;
+    gap: 12px;
 }
 
-.hero-image-placeholder {
-    width: 40%;
-    background-color: #e0e0e0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.hero-img {
+    flex: 1;
+    background-color: #f5f5f5;
     border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* 3) Kartlar Bölümü */
-.cards-section {
+.icon-placeholder {
+    width: 80px;
+    height: 80px;
+    background-color: #e0e0e0;
+    border-radius: 15px;
+}
+
+.cards-area {
     height: 30vh;
     display: flex;
-    flex-wrap: wrap; /* Sığmazsa alt satıra geç */
-    gap: 15px;
-    padding: 15px 5%;
-    background-color: #f9f9f9;
+    flex-wrap: wrap;
+    gap: 12px;
 }
 
 .card {
-    flex: 1 1 150px; /* Esnek kartlar */
-    background: white;
+    flex: 1 1 calc(16% - 12px);
+    background-color: #ffffff;
     border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 10px;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    gap: 10px;
+    text-align: center;
 }
 
-/* 4) Flex Grow Bölümü */
-.flex-grow-section {
+.grow-area {
     height: 20vh;
     display: flex;
-    align-items: stretch; /* Yükseklikte esneme */
-    gap: 10px;
-    padding: 10px 5%;
+    align-items: stretch;
+    gap: 15px;
 }
 
 .grow-box {
-    padding: 15px;
-    border-radius: 8px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    gap: 8px;
+    border: 1px solid #ddd;
 }
 
-.box-1 { flex-grow: 1; background-color: #e3f2fd; }
-.box-2 { flex-grow: 2; background-color: #e8f5e9; }
-.box-3 { flex-grow: 1; background-color: #fff3e0; }
+.box-1 { flex-grow: 1; background-color: #dbeafe; }
+.box-2 { flex-grow: 2; background-color: #dcfce7; }
+.box-3 { flex-grow: 1; background-color: #ffedd5; }
 
-/* 5) Footer */
+.line {
+    width: 60px;
+    height: 3px;
+    background-color: #eee;
+    border-radius: 2px;
+}
+
+.btn {
+    padding: 8px 18px;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.btn-blue { background-color: #8da9d6; }
+.btn-green { background-color: #8dbd8d; }
+.btn-orange { background-color: #eeb486; }
+
 .footer {
     height: 10vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #eee;
-    color: #666;
-    font-size: 0.9em;
+    background-color: #ffffff;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    color: #888;
+    font-size: 14px;
 }
