@@ -4,6 +4,26 @@
     <meta charset="UTF-8">
     <title>CSS Temel Ödevi</title>
     <link rel="stylesheet" href="styles/style.css">
+    <style>
+        .flexbox-lab-btn-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .flexbox-lab-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #2ecc71; /* Yeşil renk */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: background-color 0.3s;
+        }
+        .flexbox-lab-btn:hover {
+            background-color: #27ae60;
+        }
+    </style>
 </head>
 <body>
 
@@ -23,6 +43,9 @@
                 <p>Verilen benzer bir düzenle basit bir web sayfası oluşturun. CSS'in temel özelliklerini (<span>display</span>, <span>width</span>, <span>height</span>, <span>margin</span>, <span>padding</span>, <span>border</span>, selector) uygulayın. Sadece HTML5 + CSS3 kullanın, hazır framework kullanmak yasak (Bootstrap, Tailwind vb.).</p>
             </header>
 
+            <div class="flexbox-lab-btn-container">
+                <a href="flexbox-lab/index.html" class="flexbox-lab-btn">Yeni Flexbox Ödevini Gör</a>
+            </div>
             <main class="content-section">
                 <article class="box box-yellow">
                     <h3>İçerik</h3>
