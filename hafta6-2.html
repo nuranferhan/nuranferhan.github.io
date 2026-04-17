@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Birim Dönüştürücü</title>
+    <style>
+        body { font-family: Arial, sans-serif; display: flex; justify-content: center; padding-top: 50px; }
+        .card { border: 1px solid #eee; border-radius: 8px; padding: 20px; width: 350px; box-shadow: 0 4px 8px rgba(0,0,0,0.05); }
+        h2 { text-align: left; }
+        label { display: block; margin-top: 10px; font-weight: bold; }
+        input, select { width: 100%; padding: 10px; margin: 5px 0 15px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; }
+        button { width: 100%; padding: 12px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        .result-box { margin-top: 20px; padding: 15px; background-color: #dff0d8; text-align: center; font-weight: bold; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Birim Dönüştürücü</h2>
+        <label>Değer Giriniz:</label>
+        <input type="number" id="inputValue" placeholder="50">
+        
+        <label>Dönüşüm Tipi:</label>
+        <select id="type">
+            <option value="m-km">Metre -> Kilometre</option>
+            <option value="c-f">Celsius -> Fahrenheit</option>
+            <option value="kg-gr">Kilogram -> Gram</option>
+        </select>
+        
+        <button onclick="donustur()">Hesapla</button>
+        <div class="result-box" id="resultArea">Sonuç: </div>
+    </div>
+
+    <script>
+        function donustur() {
+            let val = parseFloat(document.getElementById('inputValue').value);
+            let type = document.getElementById('type').value;
+            let res = 0;
+
+            if(isNaN(val)) { alert("Lütfen bir sayı girin."); return; }
+
+            if(type === "m-km") {
+                res = val / 1000;
+            } else if(type === "c-f") {
+                res = (val * 9/5) + 32;
+            } else if(type === "kg-gr") {
+                res = val * 1000;
+            }
+
+            document.getElementById('resultArea').innerText = "Sonuç: " + res.toLocaleString('tr-TR');
+        }
+    </script>
+</body>
+</html>
