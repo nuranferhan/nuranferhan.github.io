@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Öğrenci Not Hesaplama</title>
+    <style>
+        body { font-family: Arial, sans-serif; display: flex; flex-direction: column; align-items: center; padding-top: 50px; }
+        .card { border: 1px solid #ccc; padding: 20px; width: 400px; box-shadow: 2px 2px 10px rgba(0,0,0,0.1); }
+        input { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; box-sizing: border-box; }
+        button { width: 100%; padding: 10px; background-color: #eee; cursor: pointer; border: 1px solid #ccc; }
+        #result { margin-top: 20px; padding: 15px; background-color: #f0f0f0; display: none; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Öğrenci Not Hesaplama</h2>
+        <input type="text" id="name" placeholder="Ad Soyad">
+        <input type="number" id="vize" placeholder="Vize Notu">
+        <input type="number" id="final" placeholder="Final Notu">
+        <button onclick="hesapla()">Hesapla</button>
+
+        <div id="result">
+            <h3 id="resName"></h3>
+            <p>Ortalama: <span id="resOrt"></span></p>
+            <p>Harf Notu: <span id="resHarf"></span></p>
+            <p>Durum: <span id="resDurum"></span></p>
+        </div>
+    </div>
+
+    <script>
+        function hesapla() {
+            let ad = document.getElementById('name').value;
+            let vize = parseFloat(document.getElementById('vize').value);
+            let final = parseFloat(document.getElementById('final').value);
+            
+            if(!ad || isNaN(vize) || isNaN(final)) { alert("Lütfen tüm alanları doldurun."); return; }
+
+            let ortalama = (vize * 0.4) + (final * 0.6);
+            let harf = "";
+            if (ortalama >= 90) harf = "AA";
+            else if (ortalama >= 80) harf = "BA";
+            else if (ortalama >= 70) harf = "BB";
+            else if (ortalama >= 60) harf = "CB";
+            else if (ortalama >= 50) harf = "CC";
+            else harf = "FF";
+
+            let durum = ortalama >= 50 ? "Geçti" : "Kaldı";
+
+            document.getElementById('resName').innerText = ad;
+            document.getElementById('resOrt').innerText = ortalama.toFixed(2);
+            document.getElementById('resHarf').innerText = harf;
+            document.getElementById('resDurum').innerText = durum;
+            document.getElementById('result').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
