@@ -206,8 +206,8 @@ body {
 }
 .btn-outline-custom {
   background: transparent;
-  border: 1.5px solid var(--border-color);
-  color: var(--text-primary);
+  border: 1.5px solid rgba(255,255,255,.35);
+  color: #fff;
   font-family: var(--font-display);
   font-weight: 600;
   border-radius: 10px;
@@ -215,9 +215,9 @@ body {
   transition: background .2s, border-color .2s;
 }
 .btn-outline-custom:hover {
-  background: var(--border-color);
-  border-color: var(--border-color);
-  color: var(--text-primary);
+  background: rgba(255,255,255,.12);
+  border-color: rgba(255,255,255,.5);
+  color: #fff;
 }
 .btn-detail {
   background: transparent;
