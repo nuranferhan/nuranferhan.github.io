@@ -47,7 +47,8 @@ function toggleTheme() {
 // Kayıtlı temayı uygula
 (function initTheme() {
   const saved = localStorage.getItem('wplab-theme');
-  if (saved) html.setAttribute('data-theme', saved);
+  // Varsayılan her zaman açık tema; yalnızca kullanıcı koyu seçtiyse uygula
+  html.setAttribute('data-theme', saved === 'dark' ? 'dark' : 'light');
   syncThemeUI();
 })();
 
