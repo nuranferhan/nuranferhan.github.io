@@ -4,33 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hafta 7 – Etkinlik Kayıt</title>
-
-    <!-- Bootstrap 5 CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
+    <link href="https://cdn.npmmirror.com/status/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/hafta7.css">
 </head>
 <body>
 
-<!--  NAVBAR  -->
 <nav class="navbar navbar-expand-lg sticky-top" id="mainNavbar">
     <div class="container">
-        <a class="navbar-brand" href="index.html">
-            <span class="brand-dot"></span>WP Lab
-        </a>
+        <a class="navbar-brand" href="index.html"><span class="brand-dot"></span>WP Lab</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navMenu">
-            <ul class="navbar-nav ms-auto gap-1 align-items-center">
+            <ul class="navbar-nav ms-auto align-items-center">
                 <li class="nav-item"><a class="nav-link" href="#hero">Ana Sayfa</a></li>
                 <li class="nav-item"><a class="nav-link" href="#workshops">Atölyeler</a></li>
                 <li class="nav-item"><a class="nav-link" href="#form-section">Başvuru</a></li>
-                <li class="nav-item"><a class="nav-link" href="#result-section">Sonuç</a></li>
                 <li class="nav-item ms-2">
                     <button class="btn btn-sm theme-toggle" id="themeBtn">
                         <i class="bi bi-moon-stars-fill" id="themeIcon"></i>
@@ -42,135 +33,53 @@
     </div>
 </nav>
 
-<!--  HERO  -->
 <section class="hero-section" id="hero">
     <div class="container">
         <div class="row align-items-center min-vh-80">
-            <div class="col-lg-7 hero-content">
-                <div class="badge-pill mb-3">Hafta 7 Laboratuvarı</div>
-                <h1 class="hero-title">Bootstrap ve JavaScript<br><em>ile Etkinlik Kayıt</em><br>Sayfası</h1>
-                <p class="hero-desc">Bu sayfada Bootstrap ile responsive bir arayüz tasarlanır; JavaScript ile de <strong>tema değiştirme</strong> ve form verilerinden <strong>başvuru özeti üretme</strong> işlemleri yapılır.</p>
-
-                <div class="tech-tags mb-4">
-                    <span class="tech-tag">Navbar</span>
-                    <span class="tech-tag">Grid</span>
-                    <span class="tech-tag">Card</span>
-                    <span class="tech-tag">Form</span>
-                    <span class="tech-tag">Alert</span>
-                </div>
-
-                <ul class="feature-list mb-5">
-                    <li><i class="bi bi-check2-circle"></i> Bootstrap CDN kullanımı</li>
-                    <li><i class="bi bi-check2-circle"></i> Responsive sütun yapısı</li>
-                    <li><i class="bi bi-check2-circle"></i> JavaScript ile form verisi okuma</li>
-                    <li><i class="bi bi-check2-circle"></i> Tema değiştirme işlemi</li>
-                </ul>
-
-                <div class="d-flex flex-wrap gap-3">
-                    <a href="#form-section" class="btn btn-hero-primary">
-                        <i class="bi bi-pencil-square me-2"></i>Başvuru Formuna Git
-                    </a>
-                    <button class="btn btn-hero-outline" id="heroDarkBtn">
-                        <i class="bi bi-moon me-2"></i>Koyu Temaya Geç
-                    </button>
-                </div>
-            </div>
-
-            <div class="col-lg-5 d-none d-lg-flex justify-content-center">
-                <div class="hero-visual">
-                    <div class="visual-card vc1">
-                        <i class="bi bi-bootstrap-fill"></i>
-                        <span>Bootstrap 5</span>
-                    </div>
-                    <div class="visual-card vc2">
-                        <i class="bi bi-filetype-js"></i>
-                        <span>JavaScript</span>
-                    </div>
-                    <div class="visual-card vc3">
-                        <i class="bi bi-phone"></i>
-                        <span>Responsive</span>
-                    </div>
-                    <div class="visual-orbit"></div>
+            <div class="col-lg-7">
+                <div class="badge-pill">Hafta 7 Laboratuvarı</div>
+                <h1 class="hero-title">Bootstrap ve JavaScript<br><em>ile Etkinlik Kayıt</em></h1>
+                <p class="hero-desc">Tema değiştirme ve form verilerinden başvuru özeti üretme işlemlerini içerir[cite: 6].</p>
+                <div class="d-flex gap-3">
+                    <a href="#form-section" class="btn btn-hero-primary">Başvuru Formuna Git</a>
+                    <button class="btn btn-hero-outline" id="heroDarkBtn">Koyu Temaya Geç</button>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!--  CARDS (Atölyeler)  -->
 <section class="workshops-section py-5" id="workshops">
     <div class="container">
         <div class="section-header text-center mb-5">
             <p class="section-label">Atölye İçerikleri</p>
-            <h2 class="section-title">Bootstrap bileşenlerini kullanarak<br>tasarlanmış örnek kartlar</h2>
+            <h2 class="section-title">Örnek Kart Tasarımları</h2>
         </div>
-
         <div class="row g-4">
-            <!-- Card 1 -->
             <div class="col-md-4">
                 <div class="workshop-card card h-100 shadow-sm">
                     <div class="card-accent accent-1"></div>
                     <div class="card-body p-4">
-                        <div class="card-icon mb-3">
-                            <i class="bi bi-layout-wtf"></i>
-                        </div>
-                        <span class="card-badge">Temel</span>
-                        <h5 class="card-title mt-2">Bootstrap Yapısı</h5>
-                        <p class="card-text">Container, row ve col sınıflarıyla responsive grid düzeni kurmayı öğrenin. Farklı ekran boyutlarına göre davranış ayarlayın.</p>
-                        <ul class="card-feature-list">
-                            <li><i class="bi bi-arrow-right-short"></i> container / container-fluid</li>
-                            <li><i class="bi bi-arrow-right-short"></i> col-sm, col-md, col-lg</li>
-                            <li><i class="bi bi-arrow-right-short"></i> Offset ve order sınıfları</li>
-                        </ul>
-                    </div>
-                    <div class="card-footer bg-transparent border-0 pb-4 px-4">
-                        <a href="#" class="btn btn-card">İncele <i class="bi bi-arrow-right ms-1"></i></a>
+                        <h5 class="card-title">Bootstrap Yapısı</h5>
+                        <p class="card-text">Grid düzeni ve responsive tasarım temelleri[cite: 17, 18].</p>
                     </div>
                 </div>
             </div>
-
-            <!-- Card 2 -->
             <div class="col-md-4">
                 <div class="workshop-card card h-100 shadow-sm featured-card">
                     <div class="card-accent accent-2"></div>
                     <div class="card-body p-4">
-                        <div class="card-icon mb-3">
-                            <i class="bi bi-file-earmark-code"></i>
-                        </div>
-                        <span class="card-badge badge-featured">Önerilen</span>
-                        <h5 class="card-title mt-2">Bileşen Kütüphanesi</h5>
-                        <p class="card-text">Navbar, modal, accordion, tooltip gibi hazır Bootstrap bileşenlerini projelerinizde hızlıca kullanmayı keşfedin.</p>
-                        <ul class="card-feature-list">
-                            <li><i class="bi bi-arrow-right-short"></i> Navbar & Hamburger Menü</li>
-                            <li><i class="bi bi-arrow-right-short"></i> Modal & Offcanvas</li>
-                            <li><i class="bi bi-arrow-right-short"></i> Accordion & Tabs</li>
-                        </ul>
-                    </div>
-                    <div class="card-footer bg-transparent border-0 pb-4 px-4">
-                        <a href="#" class="btn btn-card-featured">İncele <i class="bi bi-arrow-right ms-1"></i></a>
+                        <h5 class="card-title">Bileşen Kütüphanesi</h5>
+                        <p class="card-text">Navbar, modal ve hazır bileşenler[cite: 23].</p>
                     </div>
                 </div>
             </div>
-
-            <!-- Card 3 -->
             <div class="col-md-4">
                 <div class="workshop-card card h-100 shadow-sm">
                     <div class="card-accent accent-3"></div>
                     <div class="card-body p-4">
-                        <div class="card-icon mb-3">
-                            <i class="bi bi-braces-asterisk"></i>
-                        </div>
-                        <span class="card-badge">İleri</span>
-                        <h5 class="card-title mt-2">JS & DOM İşlemleri</h5>
-                        <p class="card-text">JavaScript ile DOM'a erişin, olay dinleyicileri ekleyin ve kullanıcı girişlerine dinamik tepkiler verin.</p>
-                        <ul class="card-feature-list">
-                            <li><i class="bi bi-arrow-right-short"></i> querySelector & getElementById</li>
-                            <li><i class="bi bi-arrow-right-short"></i> addEventListener</li>
-                            <li><i class="bi bi-arrow-right-short"></i> classList.toggle()</li>
-                        </ul>
-                    </div>
-                    <div class="card-footer bg-transparent border-0 pb-4 px-4">
-                        <a href="#" class="btn btn-card">İncele <i class="bi bi-arrow-right ms-1"></i></a>
+                        <h5 class="card-title">JS & DOM İşlemleri</h5>
+                        <p class="card-text">Olay dinleyicileri ve dinamik tepkiler[cite: 28].</p>
                     </div>
                 </div>
             </div>
@@ -178,142 +87,67 @@
     </div>
 </section>
 
-<!--  FORM  -->
 <section class="form-section py-5" id="form-section">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8">
-                <div class="section-header text-center mb-5">
-                    <p class="section-label">Kayıt Ol</p>
-                    <h2 class="section-title">Etkinliğe Başvur</h2>
-                    <p class="section-desc">Aşağıdaki formu eksiksiz doldurarak etkinlik kaydınızı tamamlayın.</p>
-                </div>
-
-                <!-- Alert area -->
                 <div id="alertArea"></div>
-
-                <div class="form-card card shadow-sm">
-                    <div class="card-body p-4 p-md-5">
-                        <form id="registrationForm" novalidate>
-                            <!-- Ad & Soyad -->
-                            <div class="row g-3 mb-3">
-                                <div class="col-sm-6">
-                                    <label for="firstName" class="form-label">Ad <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="firstName" placeholder="Adınız">
-                                </div>
-                                <div class="col-sm-6">
-                                    <label for="lastName" class="form-label">Soyad <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="lastName" placeholder="Soyadınız">
-                                </div>
+                <div class="form-card card shadow-sm p-4">
+                    <form id="registrationForm" novalidate>
+                        <div class="row g-3 mb-3">
+                            <div class="col-sm-6">
+                                <label class="form-label">Ad *</label>
+                                <input type="text" class="form-control" id="firstName" required>
                             </div>
-
-                            <!-- E-posta -->
-                            <div class="mb-3">
-                                <label for="email" class="form-label">E-posta <span class="text-danger">*</span></label>
-                                <div class="input-group">
-                                    <span class="input-group-text"><i class="bi bi-envelope"></i></span>
-                                    <input type="email" class="form-control" id="email" placeholder="ornek@email.com">
-                                </div>
+                            <div class="col-sm-6">
+                                <label class="form-label">Soyad *</label>
+                                <input type="text" class="form-control" id="lastName" required>
                             </div>
-
-                            <!-- Atölye seçimi -->
-                            <div class="mb-3">
-                                <label for="workshop" class="form-label">Atölye Seçimi <span class="text-danger">*</span></label>
-                                <select class="form-select" id="workshop">
-                                    <option value="">-- Bir atölye seçin --</option>
-                                    <option value="Bootstrap Yapısı">Bootstrap Yapısı</option>
-                                    <option value="Bileşen Kütüphanesi">Bileşen Kütüphanesi</option>
-                                    <option value="JS & DOM İşlemleri">JS & DOM İşlemleri</option>
-                                </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">E-posta *</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Atölye Seçimi *</label>
+                            <select class="form-select" id="workshop">
+                                <option value="">-- Seçin --</option>
+                                <option value="Bootstrap Yapısı">Bootstrap Yapısı</option>
+                                <option value="Bileşen Kütüphanesi">Bileşen Kütüphanesi</option>
+                                <option value="JS & DOM İşlemleri">JS & DOM İşlemleri</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Deneyim Seviyesi *</label>
+                            <div class="d-flex gap-3">
+                                <div class="form-check"><input class="form-check-input" type="radio" name="level" value="Başlangıç" id="l1"><label class="form-check-label" for="l1">Başlangıç</label></div>
+                                <div class="form-check"><input class="form-check-input" type="radio" name="level" value="Orta" id="l2"><label class="form-check-label" for="l2">Orta</label></div>
                             </div>
-
-                            <!-- Deneyim seviyesi -->
-                            <div class="mb-3">
-                                <label class="form-label">Deneyim Seviyesi <span class="text-danger">*</span></label>
-                                <div class="d-flex gap-3 flex-wrap">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="level" id="lvl1" value="Başlangıç">
-                                        <label class="form-check-label" for="lvl1">Başlangıç</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="level" id="lvl2" value="Orta">
-                                        <label class="form-check-label" for="lvl2">Orta</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="level" id="lvl3" value="İleri">
-                                        <label class="form-check-label" for="lvl3">İleri</label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Mesaj -->
-                            <div class="mb-3">
-                                <label for="message" class="form-label">Beklentileriniz</label>
-                                <textarea class="form-control" id="message" rows="3" placeholder="Bu etkinlikten beklentilerinizi kısaca yazın..."></textarea>
-                            </div>
-
-                            <!-- KVKK -->
-                            <div class="mb-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="kvkk">
-                                    <label class="form-check-label" for="kvkk">
-                                        Kişisel verilerimin işlenmesine onay veriyorum. <span class="text-danger">*</span>
-                                    </label>
-                                </div>
-                            </div>
-
-                            <div class="d-grid">
-                                <button type="submit" class="btn btn-submit">
-                                    <i class="bi bi-send-fill me-2"></i>Başvuruyu Gönder
-                                </button>
-                            </div>
-                        </form>
-                    </div>
+                        </div>
+                        <div class="form-check mb-4">
+                            <input class="form-check-input" type="checkbox" id="kvkk">
+                            <label class="form-check-label">KVKK Onayı *</label>
+                        </div>
+                        <button type="submit" class="btn btn-submit w-100">Başvuruyu Gönder</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- RESULT -->
 <section class="result-section py-5" id="result-section">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <div class="section-header text-center mb-4">
-                    <p class="section-label">Başvuru Durumu</p>
-                    <h2 class="section-title">Sonuç Alanı</h2>
-                    <p class="section-desc">Form doldurulduktan sonra başvuru özetiniz burada görünecektir.</p>
-                </div>
-                <div id="resultArea">
-                    <div class="result-placeholder text-center py-5">
-                        <i class="bi bi-inbox display-3 mb-3"></i>
-                        <p>Henüz başvuru yapılmadı.</p>
-                    </div>
-                </div>
+    <div class="container text-center">
+        <div id="resultArea">
+            <div class="result-placeholder">
+                <i class="bi bi-inbox display-3"></i>
+                <p>Henüz başvuru yapılmadı[cite: 60].</p>
             </div>
         </div>
     </div>
 </section>
 
-<!--  FOOTER  -->
-<footer class="site-footer py-4">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-md-6 text-center text-md-start mb-2 mb-md-0">
-                <span class="footer-brand">WP Lab</span>
-                <span class="footer-sep">·</span>
-                <span>Web Programlama Dersi — Hafta 7</span>
-            </div>
-            <div class="col-md-6 text-center text-md-end">
-                <a href="index.html" class="footer-link"><i class="bi bi-house me-1"></i>Ana Sayfaya Dön</a>
-            </div>
-        </div>
-    </div>
-</footer>
-
-<!-- Bootstrap Bundle JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.npmmirror.com/status/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
 <script src="scripts/hafta7.js"></script>
 </body>
 </html>
