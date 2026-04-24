@@ -190,52 +190,61 @@ body {
 
 /* ── Buttons ──────────────────────────────────────────────── */
 .btn-primary-custom {
-  background: var(--accent-blue);
-  border: 1.5px solid var(--accent-blue);
-  color: #fff;
+  background: var(--accent-blue) !important;
+  border: 1.5px solid var(--accent-blue) !important;
+  color: #fff !important;
   font-family: var(--font-display);
   font-weight: 600;
   border-radius: 10px;
   font-size: .875rem;
   transition: background .2s, border-color .2s, transform .15s;
 }
-.btn-primary-custom:hover {
-  background: #2563eb;
-  border-color: #2563eb;
+.btn-primary-custom:hover,
+.btn-primary-custom:focus,
+.btn-primary-custom:active {
+  background: #2563eb !important;
+  border-color: #2563eb !important;
   color: #fff !important;
   transform: translateY(-1px);
+  box-shadow: none !important;
 }
 /* Çerçeveli buton — form alanı (temaya duyarlı) */
 .btn-outline-form {
-  background: transparent;
-  border: 1.5px solid var(--border-color);
-  color: var(--text-secondary);
+  background: transparent !important;
+  border: 1.5px solid var(--border-color) !important;
+  color: var(--text-primary) !important;
   font-family: var(--font-display);
   font-weight: 600;
   border-radius: 10px;
   font-size: .875rem;
   transition: background .2s, border-color .2s, color .2s;
 }
-.btn-outline-form:hover {
-  background: var(--border-color);
-  border-color: var(--border-color);
-  color: var(--text-primary);
+.btn-outline-form:hover,
+.btn-outline-form:focus,
+.btn-outline-form:active {
+  background: var(--border-color) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-primary) !important;
+  box-shadow: none !important;
 }
 /* Çerçeveli buton — hero (koyu arka plan, sabit beyaz) */
 .btn-outline-custom {
-  background: transparent;
-  border: 1.5px solid rgba(255,255,255,.35);
-  color: #fff;
+  background: transparent !important;
+  border: 1.5px solid rgba(255,255,255,.35) !important;
+  color: #fff !important;
   font-family: var(--font-display);
   font-weight: 600;
   border-radius: 10px;
   font-size: .875rem;
   transition: background .2s, border-color .2s;
 }
-.btn-outline-custom:hover {
-  background: rgba(255,255,255,.12);
-  border-color: rgba(255,255,255,.5);
-  color: #fff;
+.btn-outline-custom:hover,
+.btn-outline-custom:focus,
+.btn-outline-custom:active {
+  background: rgba(255,255,255,.12) !important;
+  border-color: rgba(255,255,255,.5) !important;
+  color: #fff !important;
+  box-shadow: none !important;
 }
 .btn-detail {
   background: transparent;
