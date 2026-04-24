@@ -13,7 +13,6 @@
   --bg-page: #f6f7fb;
   --bg-card: #ffffff;
   --bg-nav: #111418;
-  --bg-hero: #111418;
   --bg-info: #ffffff;
   --bg-form: #ffffff;
   --bg-footer: #111418;
@@ -24,8 +23,6 @@
   --text-secondary: #4b5563;
   --text-muted: #6b7280;
   --text-nav: #e5e7eb;
-  --text-hero: #f9fafb;
-  --text-hero-desc: #9ca3af;
   --text-footer: #9ca3af;
 
   --border-color: #e5e7eb;
@@ -41,7 +38,6 @@
   --bg-page: #0f1117;
   --bg-card: #1a1d27;
   --bg-nav: #0a0c11;
-  --bg-hero: #0a0c11;
   --bg-info: #1a1d27;
   --bg-form: #1a1d27;
   --bg-footer: #0a0c11;
@@ -52,8 +48,6 @@
   --text-secondary: #94a3b8;
   --text-muted: #64748b;
   --text-nav: #e2e8f0;
-  --text-hero: #f1f5f9;
-  --text-hero-desc: #94a3b8;
   --text-footer: #64748b;
 
   --border-color: #2d3148;
@@ -118,22 +112,23 @@ body {
 
 /* ── Hero ─────────────────────────────────────────────────── */
 .hero-section {
-  background: var(--bg-hero);
+  background: var(--bg-page);
   padding: 72px 0 80px;
   position: relative;
   overflow: hidden;
+  border-bottom: 1px solid var(--border-color);
 }
 .hero-section::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 60% 70% at 80% 50%, rgba(59,130,246,.12) 0%, transparent 70%);
+  background: radial-gradient(ellipse 60% 70% at 80% 50%, rgba(59,130,246,.07) 0%, transparent 70%);
   pointer-events: none;
 }
 .badge-week {
   display: inline-block;
-  background: rgba(59,130,246,.18);
-  color: #60a5fa;
+  background: rgba(59,130,246,.1);
+  color: var(--accent-blue);
   font-family: var(--font-display);
   font-size: .75rem;
   font-weight: 700;
@@ -141,19 +136,19 @@ body {
   text-transform: uppercase;
   padding: .3rem .8rem;
   border-radius: 100px;
-  border: 1px solid rgba(59,130,246,.3);
+  border: 1px solid rgba(59,130,246,.2);
   margin-bottom: 1rem;
 }
 .hero-title {
   font-family: var(--font-display);
   font-weight: 800;
   font-size: clamp(1.75rem, 4vw, 2.75rem);
-  color: var(--text-hero);
+  color: var(--text-primary);
   line-height: 1.15;
   margin-bottom: 1rem;
 }
 .hero-desc {
-  color: var(--text-hero-desc);
+  color: var(--text-secondary);
   font-size: 1rem;
   line-height: 1.7;
   max-width: 520px;
@@ -161,15 +156,15 @@ body {
 
 /* Info Card in Hero */
 .info-card-hero {
-  background: rgba(255,255,255,.06);
-  border: 1px solid rgba(255,255,255,.1);
-  backdrop-filter: blur(8px);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--card-shadow);
 }
 .info-card-title {
   font-family: var(--font-display);
   font-weight: 700;
   font-size: .95rem;
-  color: #f1f5f9;
+  color: var(--text-primary);
 }
 .tech-badge {
   font-size: .72rem;
@@ -184,7 +179,7 @@ body {
 .badge-js2   { background:#fee2e2; color:#991b1b; }
 .info-list li {
   font-size: .875rem;
-  color: #cbd5e1;
+  color: var(--text-secondary);
   margin-bottom: .45rem;
 }
 
@@ -227,23 +222,23 @@ body {
   color: var(--text-primary) !important;
   box-shadow: none !important;
 }
-/* Çerçeveli buton — hero (koyu arka plan, sabit beyaz) */
+/* Çerçeveli buton — hero (temaya duyarlı) */
 .btn-outline-custom {
   background: transparent !important;
-  border: 1.5px solid rgba(255,255,255,.35) !important;
-  color: #fff !important;
+  border: 1.5px solid var(--border-color) !important;
+  color: var(--text-primary) !important;
   font-family: var(--font-display);
   font-weight: 600;
   border-radius: 10px;
   font-size: .875rem;
-  transition: background .2s, border-color .2s;
+  transition: background .2s, border-color .2s, color .2s;
 }
 .btn-outline-custom:hover,
 .btn-outline-custom:focus,
 .btn-outline-custom:active {
-  background: rgba(255,255,255,.12) !important;
-  border-color: rgba(255,255,255,.5) !important;
-  color: #fff !important;
+  background: var(--border-color) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-primary) !important;
   box-shadow: none !important;
 }
 .btn-detail {
