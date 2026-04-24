@@ -5,122 +5,94 @@
     <title>CSS Temel Ödevi - Nuran Ferhan Kasap</title>
     <link rel="stylesheet" href="styles/style.css">
     <style>
-        /* Ödev yapısına dokunmadan eklenen kişisel tanıtım alanı */
+        :root {
+            --primary-blue: #2563eb;
+            --primary-purple: #7c3aed;
+            --bg-light: #f8fafc;
+            --text-dark: #1e293b;
+            --card-white: #ffffff;
+        }
+
         .user-profile-header {
-            background: linear-gradient(135deg, #1e1e2f, #3a1c71);
-            color: white;
-            padding: 30px;
+            background: var(--card-white);
+            color: var(--text-dark);
+            padding: 25px;
             border-radius: 12px;
             margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            font-family: 'Inter', system-ui, sans-serif;
         }
 
         .user-info h2 {
             margin: 0;
-            font-size: 1.8rem;
-            letter-spacing: 1px;
-            background: linear-gradient(to right, #00d2ff, #9d50bb);
+            font-size: 1.6rem;
+            color: var(--text-dark);
+            background: linear-gradient(to right, var(--primary-blue), var(--primary-purple));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .user-info p {
             margin: 5px 0 0;
-            opacity: 0.9;
-            font-size: 1rem;
-            color: #d1d1d1;
+            color: #64748b;
+            font-size: 0.95rem;
         }
 
         .status-badge {
             display: inline-block;
-            background: rgba(0, 210, 255, 0.15);
-            color: #00d2ff;
+            background: #f1f5f9;
+            color: var(--primary-blue);
             padding: 4px 12px;
             border-radius: 20px;
             font-size: 0.8rem;
             margin-top: 10px;
-            border: 1px solid rgba(0, 210, 255, 0.3);
+            font-weight: 600;
+            border: 1px solid #e2e8f0;
         }
 
-        /* Orijinal buton stillerin */
-        .flexbox-lab-btn-container {
-            text-align: center;
-            margin: 20px 0;
-        }
+        .flexbox-lab-btn-container { text-align: center; margin: 20px 0; }
         .flexbox-lab-btn {
             display: inline-block;
             padding: 12px 24px;
-            background-color: #2ecc71;
+            background-color: var(--primary-blue);
             color: white;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 6px;
             font-weight: bold;
-            font-size: 1.1em;
-            transition: background-color 0.3s;
+            transition: transform 0.2s, opacity 0.2s;
         }
-        .flexbox-lab-btn:hover {
-            background-color: #27ae60;
-        }
+        .flexbox-lab-btn:hover { opacity: 0.9; transform: translateY(-1px); }
     </style>
 </head>
 <body>
-
-    <div class="page-wrapper">
+    <div class="page-wrapper" style="background-color: var(--bg-light); padding: 20px 0;">
         <div class="container">
-            
             <div class="user-profile-header">
                 <div class="user-info">
                     <h2>Nuran Ferhan Kasap</h2>
-                    <p>Marmara Üniversitesi | Bilgisayar Mühendisliği Öğrencisi</p>
-                    <div class="status-badge">Web Programlama Ödev Portfolyosu</div>
+                    <p>Marmara Üniversitesi | Bilgisayar Mühendisliği</p>
+                    <div class="status-badge">Web Programlama Portfolio</div>
                 </div>
             </div>
-
             <nav class="navbar">
                 <h1 class="logo">Hafta 2: CSS Temel Ödevi</h1>
                 <ul class="nav-links">
                     <li><a href="index.html" class="active">Ana Sayfa</a></li>
-                    <li><a href="about.html">Hakkında</a></li>
-                    <li><a href="interests.html">İlgi Alanlarım</a></li> <li><a href="contact.html">İletişim</a></li>
+                    <li><a href="about.html">Hakkımda</a></li>
+                    <li><a href="interests.html">İlgi Alanlarım</a></li>
+                    <li><a href="contact.html">İletişim</a></li>
                 </ul>
             </nav>
-
             <header class="intro-text">
-                <p>Verilen benzer bir düzenle basit bir web sayfası oluşturun. CSS'in temel özelliklerini (<span>display</span>, <span>width</span>, <span>height</span>, <span>margin</span>, <span>padding</span>, <span>border</span>, selector) uygulayın. Sadece HTML5 + CSS3 kullanın, hazır framework kullanmak yasak (Bootstrap, Tailwind vb.).</p>
+                <p>Verilen benzer bir düzenle basit bir web sayfası oluşturun...</p>
             </header>
-
             <div class="flexbox-lab-btn-container">
                 <a href="flexbox-lab/index.html" class="flexbox-lab-btn">Flexbox Ödevi</a>
-                <a href="lab-position.html" class="flexbox-lab-btn" style="background-color: #9b59b6; margin-left: 10px;">Position Ödevi</a>
-                <a href="hafta6-1.html" class="flexbox-lab-btn" style="background-color: #3498db; margin-left: 10px;">Hafta 6 1</a>
-                <a href="hafta6-2.html" class="flexbox-lab-btn" style="background-color: #e67e22; margin-left: 10px;">Hafta 6 2</a>
-                <a href="hafta7.html" class="flexbox-lab-btn" style="background-color: #e74c3c; margin-left: 10px;">Hafta 7</a>
+                <a href="lab-position.html" class="flexbox-lab-btn" style="background-color: #8b5cf6; margin-left: 10px;">Position Ödevi</a>
+                <a href="hafta6-1.html" class="flexbox-lab-btn" style="background-color: #3b82f6; margin-left: 10px;">Hafta 6 1</a>
             </div>
-
-            <main class="content-section">
-                <article class="box box-yellow">
-                    <h3>İçerik</h3>
-                    <p>Bu alanda örnek içerik metinleri bulunmaktadır. Css özellikleriyle bu metinler arasında <strong>boşluklar</strong> (line-height) ve hizalamalar (text-align) düzenlelleririz.</p>
-                    <p>Önce CSS ile kutuları / alanlari yan yana getirmeyi, ardından alt alta yerleştirmeyi öğrendik. Şimdi ise CSS seçicilerini kullanarak grup ve hiyerarşik seçimler yapmayı göreceğiz.</p>
-                </article>
-
-                <aside class="box box-blue">
-                    <h3>Yan Menü / Bilgi</h3>
-                    <p>Bu alan yan menü veya bilgi kısmıdır. CSS ile genişlik (width), yükseklik (height), kenar boşlukları (margin/padding) ve kenarlık (border) özelliklerini kullanarak düzenleyebiliriz.</p>
-                    <p>Öğrendiklerimizi hiyerarşik ve grup seçicilerle uygulayıp farkii bölümlere stil verebiliriz.</p>
-                </aside>
-            </main>
-
-            <footer class="footer">
-                <p>&copy; 2026 Nuran Ferhan Kasap | CSS Temel Örnek. Bu sayfa basit bir HTML+CSS alıştırmasıdır.</p>
-            </footer>
-        </div>
+            </div>
     </div>
-
 </body>
 </html>
