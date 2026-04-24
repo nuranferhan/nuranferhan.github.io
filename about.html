@@ -3,190 +3,229 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hakkımda - Nuran Ferhan</title>
+    <title>Hakkımda | Nuran Ferhan</title>
     <style>
         :root {
-            --bg-color: #0f0c29;
-            --gradient: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-            --accent-blue: #00d2ff;
-            --accent-purple: #9d50bb;
-            --text-color: #f0f0f0;
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
+            --bg-deep: #0a0a0c;
+            --card-bg: #16161a;
+            --accent-primary: #7c4dff; /* Modern Mor */
+            --accent-secondary: #00b0ff; /* Canlı Mavi */
+            --text-main: #ffffff;
+            --text-dim: #a0a0a1;
+            --border-color: #2d2d30;
         }
 
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         }
 
         body {
-            background: var(--gradient);
-            background-attachment: fixed;
-            color: var(--text-color);
-            line-height: 1.6;
-            min-height: 100vh;
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
         }
 
-        header {
-            text-align: center;
-            padding: 4rem 1rem;
-            background: rgba(0, 0, 0, 0.2);
-        }
-
-        header h1 {
-            font-size: 2.5rem;
-            background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 0.5rem;
-        }
-
+        /* Navigasyon */
         nav {
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
+            background: rgba(10, 10, 12, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
             position: sticky;
             top: 0;
-            z-index: 100;
-            border-bottom: 1px solid var(--glass-border);
+            z-index: 1000;
         }
 
         nav ul {
+            max-width: 1100px;
+            margin: 0 auto;
             list-style: none;
             display: flex;
             justify-content: center;
-            flex-wrap: wrap;
         }
 
         nav a {
-            color: var(--text-color);
+            color: var(--text-dim);
             text-decoration: none;
-            padding: 1rem 1.5rem;
+            padding: 1.2rem 1.5rem;
             display: block;
-            transition: 0.3s;
+            font-size: 0.95rem;
             font-weight: 500;
+            transition: all 0.3s ease;
         }
 
         nav a:hover {
-            color: var(--accent-blue);
-            background: rgba(255, 255, 255, 0.1);
+            color: var(--accent-secondary);
         }
 
+        /* Header */
+        header {
+            padding: 5rem 1rem 3rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #fff, #a0a0a1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        header p {
+            color: var(--accent-secondary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+        }
+
+        /* Ana İçerik */
         main {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 0 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
         }
 
         section {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            padding: 2rem;
-            border-radius: 15px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2.5rem;
             margin-bottom: 2rem;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        section:hover {
+            border-color: var(--accent-primary);
         }
 
         h2 {
-            color: var(--accent-blue);
-            margin-bottom: 1rem;
-            border-left: 4px solid var(--accent-purple);
-            padding-left: 10px;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-primary);
+            display: flex;
+            align-items: center;
         }
 
-        blockquote {
-            font-style: italic;
-            border-left: 4px solid var(--accent-blue);
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.03);
-            margin: 1rem 0;
+        h2::before {
+            content: "//";
+            margin-right: 10px;
+            color: var(--accent-secondary);
+            font-family: monospace;
         }
+
+        p {
+            color: var(--text-dim);
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        strong { color: var(--text-main); }
 
         ul, ol {
-            padding-left: 1.5rem;
+            color: var(--text-dim);
+            padding-left: 1.2rem;
         }
 
-        li {
-            margin-bottom: 0.5rem;
+        li { margin-bottom: 0.8rem; }
+
+        blockquote {
+            border-left: 3px solid var(--accent-secondary);
+            padding: 1.5rem;
+            background: rgba(0, 176, 255, 0.05);
+            font-style: italic;
+            border-radius: 0 8px 8px 0;
+            margin: 2rem 0;
+            color: var(--text-main);
         }
 
         .back-link {
             display: inline-block;
-            margin-top: 1rem;
-            color: var(--accent-purple);
+            color: var(--text-dim);
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 500;
+            margin-top: 1rem;
+            transition: 0.3s;
         }
+
+        .back-link:hover { color: var(--accent-secondary); padding-left: 5px; }
 
         footer {
             text-align: center;
-            padding: 2rem;
-            opacity: 0.7;
+            padding: 4rem 1rem;
+            border-top: 1px solid var(--border-color);
+            color: #555;
             font-size: 0.9rem;
         }
 
-        /* Responsive Settings */
+        /* Responsive */
         @media (max-width: 600px) {
-            header h1 { font-size: 2rem; }
-            nav ul { flex-direction: column; text-align: center; }
+            header h1 { font-size: 2.2rem; }
             section { padding: 1.5rem; }
+            nav a { padding: 1rem 0.8rem; font-size: 0.85rem; }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Hakkımda</h1>
-        <p>Geleceğin teknolojilerini şekillendirme yolculuğum</p>
-    </header>
-
     <nav>
         <ul>
             <li><a href="index.html">Ana Sayfa</a></li>
-            <li><a href="about.html">Hakkımda</a></li>
+            <li><a href="about.html" style="color: var(--accent-primary);">Hakkımda</a></li>
             <li><a href="interests.html">İlgi Alanlarım</a></li>
             <li><a href="contact.html">İletişim</a></li>
         </ul>
     </nav>
 
+    <header>
+        <p>Bilgisayar Mühendisi Adayı</p>
+        <h1>Nuran Ferhan</h1>
+    </header>
+
     <main>
         <section>
             <h2>Ben Kimim?</h2>
-            <p>Merhaba, ben <strong>Nuran Ferhan</strong>. Marmara Üniversitesi'nde <strong>Bilgisayar Mühendisliği öğrencisiyim</strong>. Web teknolojilerine ilgi duyuyor ve kendimi bu alanda geliştirmeyi hedefliyorum.</p>
-            <p>Özellikle <em>frontend geliştirme</em> ve kullanıcı deneyimi konularında projeler üretmekten ve yeni teknolojiler öğrenmekten büyük keyif alıyorum.</p>
+            <p>Merhaba, ben <strong>Nuran Ferhan</strong>. Marmara Üniversitesi'nde <strong>Bilgisayar Mühendisliği</strong> öğrencisiyim. Karmaşık problemleri basit ve kullanıcı dostu çözümlere dönüştürmeyi seviyorum.</p>
+            <p>Yazılım dünyasında özellikle <em>frontend mimarileri</em> ve modern web teknolojileri üzerine odaklanarak, estetikle işlevselliği birleştiren projeler geliştiriyorum.</p>
         </section>
 
         <section>
-            <h2>Eğitim Bilgilerim</h2>
+            <h2>Eğitim</h2>
             <ul>
-                <li>Marmara Üniversitesi</li>
-                <li>Bilgisayar Mühendisliği Bölümü</li>
-                <li>Web Programlama Dersi (2026)</li>
+                <li><strong>Marmara Üniversitesi</strong> - Bilgisayar Mühendisliği</li>
+                <li>Web Programlama Uzmanlık Modülü (2026)</li>
+                <li>Sistem Analizi ve Tasarımı</li>
             </ul>
         </section>
 
         <section>
-            <h2>Motivasyonum</h2>
+            <h2>Felsefem</h2>
             <blockquote>
-                "İyi yazılmış bir web sitesi, hem kullanıcıyı hem geliştiriciyi mutlu eder."
+                "Kod yazmak sadece bir iş değil; dijital dünyada kalıcı izler bırakma sanatıdır."
             </blockquote>
         </section>
 
         <section>
-            <h2>Hedeflerim</h2>
+            <h2>Yol Haritam</h2>
             <ol>
-                <li>Modern web teknolojilerini (HTML5, CSS3) derinlemesine öğrenmek</li>
-                <li>Responsive (mobil uyumlu) tasarımlar geliştirmek</li>
-                <li>ASP.NET Core ile dinamik web uygulamaları hazırlamak</li>
+                <li>Modern UI/UX prensiplerine hakimiyet</li>
+                <li>Scalable (ölçeklenebilir) sistem mimarileri oluşturmak</li>
+                <li>Full-stack yetkinlik: ASP.NET Core & React entegrasyonu</li>
             </ol>
         </section>
 
-        <a href="index.html" class="back-link">&larr; Ana sayfaya geri dön</a>
+        <a href="index.html" class="back-link">&larr; Ana sayfaya dön</a>
     </main>
 
     <footer>
-        <p>&copy; 2026 Nuran Ferhan | Web Programlama Dersi</p>
+        <p>&copy; 2026 Nuran Ferhan | Portfolio</p>
     </footer>
 </body>
 </html>
