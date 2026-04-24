@@ -1,6 +1,15 @@
-/* 
-   1. TEMA DEĞİŞTİRME
+/**
+ * hafta7.js
+ * Web Programlama Dersi — Hafta 7 Laboratuvarı
+ *
+ * İçerik:
+ *  1. Tema değiştirme (Light / Dark)
+ *  2. Form doğrulama ve başvuru özeti üretme
  */
+
+/* ══════════════════════════════════════════
+   1. TEMA DEĞİŞTİRME
+   ══════════════════════════════════════════ */
 
 const htmlEl    = document.documentElement;
 const themeBtn  = document.getElementById("themeBtn");
@@ -64,9 +73,9 @@ if (heroDarkBtn) {
     heroDarkBtn.addEventListener("click", toggleTheme);
 }
 
-/* 
+/* ══════════════════════════════════════════
    2. FORM — DOĞRULAMA ve ÖZET ÜRETME
-   */
+   ══════════════════════════════════════════ */
 
 const form        = document.getElementById("registrationForm");
 const alertArea   = document.getElementById("alertArea");
@@ -174,7 +183,7 @@ form.addEventListener("submit", function (event) {
     const seviyeEl = document.querySelector('input[name="level"]:checked');
     const seviye   = seviyeEl ? seviyeEl.value : "";
 
-    /*  Doğrulama  */
+    /* ─── Doğrulama ─────────────────────── */
     const eksikler = [];
 
     if (!ad)     eksikler.push("Ad");
@@ -196,7 +205,7 @@ form.addEventListener("submit", function (event) {
         return;
     }
 
-    /*  Başarılı  */
+    /* ─── Başarılı ──────────────────────── */
     showAlert("success", "Başvurunuz başarıyla alındı! Aşağıda başvuru özetinizi görebilirsiniz.");
     renderSummary({ ad, soyad, email, atolye, seviye, mesaj });
 
