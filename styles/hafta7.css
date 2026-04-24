@@ -191,19 +191,37 @@ body {
 /* ── Buttons ──────────────────────────────────────────────── */
 .btn-primary-custom {
   background: var(--accent-blue);
-  border: none;
+  border: 1.5px solid var(--accent-blue);
   color: #fff;
   font-family: var(--font-display);
   font-weight: 600;
   border-radius: 10px;
   font-size: .875rem;
-  transition: opacity .2s, transform .15s;
+  transition: background .2s, border-color .2s, transform .15s;
 }
 .btn-primary-custom:hover {
-  opacity: .88;
+  background: #2563eb;
+  border-color: #2563eb;
+  color: #fff !important;
   transform: translateY(-1px);
-  color: #fff;
 }
+/* Çerçeveli buton — form alanı (temaya duyarlı) */
+.btn-outline-form {
+  background: transparent;
+  border: 1.5px solid var(--border-color);
+  color: var(--text-secondary);
+  font-family: var(--font-display);
+  font-weight: 600;
+  border-radius: 10px;
+  font-size: .875rem;
+  transition: background .2s, border-color .2s, color .2s;
+}
+.btn-outline-form:hover {
+  background: var(--border-color);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+/* Çerçeveli buton — hero (koyu arka plan, sabit beyaz) */
 .btn-outline-custom {
   background: transparent;
   border: 1.5px solid rgba(255,255,255,.35);
