@@ -9,11 +9,9 @@ const themeLabel  = document.getElementById('themeLabel');
 function syncThemeUI() {
   const dark = html.getAttribute('data-theme') === 'dark';
 
-  // Navbar butonu
   if (themeIcon)  themeIcon.className  = dark ? 'bi bi-sun-fill' : 'bi bi-moon-fill';
   if (themeLabel) themeLabel.textContent = dark ? 'Açık Temaya Geç' : 'Koyu Temaya Geç';
 
-  // Hero butonu
   if (heroThemeBtn) {
     heroThemeBtn.innerHTML = dark
       ? '<i class="bi bi-sun me-2"></i>Açık Temaya Geç'
@@ -28,10 +26,8 @@ function toggleTheme() {
   syncThemeUI();
 }
 
-// Kayıtlı temayı uygula
 (function initTheme() {
   const saved = localStorage.getItem('wplab-theme');
-  // Varsayılan her zaman açık tema; yalnızca kullanıcı koyu seçtiyse uygula
   html.setAttribute('data-theme', saved === 'dark' ? 'dark' : 'light');
   syncThemeUI();
 })();
@@ -43,13 +39,11 @@ const form       = document.getElementById('applicationForm');
 const resultArea = document.getElementById('resultArea');
 const resetBtn   = document.getElementById('resetBtn');
 
-/** Eski uyarı varsa kaldırır. */
 function clearAlert() {
   const old = form.querySelector('.alert-validation');
   if (old) old.remove();
 }
 
-/** Uyarı mesajı gösterir. */
 function showAlert(msg) {
   clearAlert();
   const div = document.createElement('div');
@@ -59,7 +53,6 @@ function showAlert(msg) {
   div.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
-/** Başarı özetini DOM'a yazar. */
 function renderSummary(data) {
   const rows = [
     { key: 'Ad Soyad',           val: data.fullName },
