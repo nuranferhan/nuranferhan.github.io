@@ -3,133 +3,379 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>İlgi Alanlarım - Nuran Ferhan</title>
+    <title>İlgi Alanlarım | Nuran Ferhan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #0f0c29;
-            --gradient: linear-gradient(135deg, #24243e, #302b63, #0f0c29);
+            --bg: #050810;
             --accent-blue: #00d2ff;
-            --accent-purple: #9d50bb;
-            --text-color: #f0f0f0;
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
+            --accent-purple: #7b5ea7;
+            --text: #f0f0f0;
+            --muted: #8a8fa8;
+            --glass: rgba(255,255,255,0.04);
+            --glass-border: rgba(255,255,255,0.08);
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
 
         body {
-            background: var(--gradient);
-            background-attachment: fixed;
-            color: var(--text-color);
-            line-height: 1.6;
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'DM Sans', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        header { text-align: center; padding: 3rem 1rem; }
-        header h1 { 
-            font-size: 2.5rem; 
-            background: linear-gradient(to right, var(--accent-purple), var(--accent-blue));
+        #bg-canvas {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .cursor-dot {
+            width: 6px; height: 6px;
+            background: var(--accent-blue);
+            border-radius: 50%;
+            position: fixed;
+            top: 0; left: 0;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%,-50%);
+        }
+        .cursor-ring {
+            width: 32px; height: 32px;
+            border: 1.5px solid rgba(0,210,255,0.5);
+            border-radius: 50%;
+            position: fixed;
+            top: 0; left: 0;
+            pointer-events: none;
+            z-index: 9998;
+            transform: translate(-50%,-50%);
+            transition: all 0.15s ease;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 0 3rem;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(5,8,16,0.7);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .nav-logo {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 1.1rem;
+            background: linear-gradient(90deg, var(--accent-blue), #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        nav ul { list-style: none; display: flex; gap: 0.2rem; }
+
+        nav ul li a {
+            color: var(--muted);
+            text-decoration: none;
+            padding: 0.4rem 1rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border-radius: 6px;
+            transition: all 0.25s;
+        }
+
+        nav ul li a:hover { color: var(--text); background: var(--glass); }
+        nav ul li a.active { color: var(--accent-blue); }
+
+        /* PAGE WRAPPER */
+        .page-wrapper {
+            position: relative;
+            z-index: 1;
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 120px 2rem 5rem;
+        }
+
+        .page-header {
+            margin-bottom: 3rem;
+            animation: fadeUp 0.8s ease both;
+        }
+
+        .page-header .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.35rem 0.9rem;
+            background: rgba(0,210,255,0.08);
+            border: 1px solid rgba(0,210,255,0.2);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--accent-blue);
+            margin-bottom: 1.2rem;
+        }
+
+        .page-header h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: clamp(2rem, 4vw, 3rem);
+            letter-spacing: -0.5px;
+            margin-bottom: 0.75rem;
+            background: linear-gradient(90deg, var(--accent-blue), #a78bfa);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        nav {
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid var(--glass-border);
+        @keyframes fadeUp {
+            from { opacity:0; transform: translateY(24px); }
+            to   { opacity:1; transform: translateY(0); }
         }
 
-        nav ul { list-style: none; display: flex; justify-content: center; flex-wrap: wrap; }
-        nav a { color: var(--text-color); text-decoration: none; padding: 1rem 1.5rem; display: block; transition: 0.3s; }
-        nav a:hover { color: var(--accent-purple); background: rgba(255, 255, 255, 0.1); }
-
-        main { max-width: 900px; margin: 2rem auto; padding: 0 1.5rem; }
-
-        section {
-            background: var(--glass-bg);
+        .section {
+            background: var(--glass);
             border: 1px solid var(--glass-border);
-            padding: 2rem;
-            border-radius: 15px;
-            margin-bottom: 2rem;
+            border-radius: 16px;
+            padding: 2.2rem;
+            margin-bottom: 1.5rem;
+            animation: fadeUp 0.8s ease both;
+            position: relative;
+            overflow: hidden;
         }
 
-        h2 { color: var(--accent-purple); margin-bottom: 1rem; border-left: 4px solid var(--accent-blue); padding-left: 10px; }
+        .section:nth-child(2) { animation-delay: 0.1s; }
+        .section:nth-child(3) { animation-delay: 0.2s; }
+        .section:nth-child(4) { animation-delay: 0.3s; }
 
-        dt { font-weight: bold; color: var(--accent-blue); margin-top: 1rem; font-size: 1.1rem; }
-        dd { margin-left: 1rem; font-style: italic; opacity: 0.9; }
+        .section h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--accent-blue);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
 
-        .back-link { display: inline-block; margin-top: 1rem; color: var(--accent-blue); text-decoration: none; font-weight: bold; }
+        .section h2::before {
+            content: '';
+            display: block;
+            width: 3px;
+            height: 1.2em;
+            background: linear-gradient(to bottom, var(--accent-blue), var(--accent-purple));
+            border-radius: 2px;
+        }
 
-        footer { text-align: center; padding: 2rem; opacity: 0.6; }
+        .styled-list, .styled-ol {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
 
-        @media (max-width: 600px) {
-            nav ul { flex-direction: column; }
+        .styled-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            color: #c8cad6;
+            font-size: 0.95rem;
+        }
+
+        .styled-list li::before {
+            content: '';
+            width: 6px; height: 6px;
+            background: var(--accent-blue);
+            border-radius: 50%;
+            margin-top: 0.6rem;
+            flex-shrink: 0;
+        }
+
+        .styled-list ul {
+            list-style: none;
+            margin-top: 0.5rem;
+            padding-left: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .styled-list ul li::before { background: var(--accent-purple); }
+
+        .styled-ol { counter-reset: item; }
+        .styled-ol li {
+            display: flex;
+            gap: 1rem;
+            color: #c8cad6;
+            counter-increment: item;
+        }
+        .styled-ol li::before {
+            content: counter(item);
+            width: 24px; height: 24px;
+            background: rgba(0,210,255,0.1);
+            border: 1px solid rgba(0,210,255,0.2);
+            color: var(--accent-blue);
+            font-size: 0.75rem;
+            font-weight: 800;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 6px;
+            flex-shrink: 0;
+        }
+
+        dt {
+            color: var(--accent-blue);
+            font-weight: 700;
+            font-size: 1rem;
+            margin-top: 1.2rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        dd {
+            color: var(--muted);
+            font-size: 0.9rem;
+            margin-left: 0;
+            padding-left: 1rem;
+            border-left: 1px solid var(--glass-border);
+            margin-top: 0.3rem;
+            font-style: italic;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            margin-top: 2rem;
+            transition: color 0.2s;
+        }
+        .back-link:hover { color: var(--accent-blue); }
+
+        footer {
+            text-align: center;
+            padding: 3rem;
+            color: var(--muted);
+            font-size: 0.8rem;
+            border-top: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+        }
+
+        @media (max-width: 768px) {
+            nav { padding: 0 1.5rem; }
+            .page-wrapper { padding: 100px 1.5rem 4rem; }
         }
     </style>
 </head>
 <body>
-    <header>
+
+<canvas id="bg-canvas"></canvas>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<nav>
+    <a href="index.html" class="nav-logo">NFK</a>
+    <ul>
+        <li><a href="index.html">Ana Sayfa</a></li>
+        <li><a href="about.html">Hakkımda</a></li>
+        <li><a href="interests.html" class="active">İlgi Alanlarım</a></li>
+        <li><a href="contact.html">İletişim</a></li>
+    </ul>
+</nav>
+
+<div class="page-wrapper">
+    <div class="page-header">
+        <div class="badge">Keşfet</div>
         <h1>İlgi Alanlarım</h1>
-        <p>Sürekli öğrenen bir mühendis adayının ilgi odağı</p>
-    </header>
+        <p>Sürekli öğrenen bir mühendis adayının teknoloji odağı</p>
+    </div>
 
-    <nav>
-        <ul>
-            <li><a href="index.html">Ana Sayfa</a></li>
-            <li><a href="about.html">Hakkımda</a></li>
-            <li><a href="interests.html">İlgi Alanlarım</a></li>
-            <li><a href="contact.html">İletişim</a></li>
+    <div class="section">
+        <h2>Teknoloji Odak Noktalarım</h2>
+        <ul class="styled-list">
+            <li>Modern Web Geliştirme (Frontend & Backend)</li>
+            <li>Yapay Zekâ ve Veri Madenciliği Uygulamaları</li>
+            <li>Mobil Uygulama Mimarileri</li>
+            <li>
+                Öğrenme Yolculuğumdaki Teknolojiler:
+                <ul>
+                    <li>React & Modern JavaScript</li>
+                    <li>ASP.NET Core Ekosistemi</li>
+                    <li>Flutter ile Cross-Platform Geliştirme</li>
+                </ul>
+            </li>
         </ul>
-    </nav>
+    </div>
 
-    <main>
-        <section>
-            <h2>Teknoloji Alanındaki İlgi Alanlarım</h2>
-            <ul>
-                <li>Web geliştirme</li>
-                <li>Yapay zekâ uygulamaları</li>
-                <li>Mobil uygulama geliştirme</li>
-                <li>Öğrenmek istediğim teknolojiler
-                    <ul>
-                        <li>React</li>
-                        <li>ASP.NET Core</li>
-                        <li>Flutter</li>
-                    </ul>
-                </li>
-            </ul>
-        </section>
+    <div class="section">
+        <h2>Günlük Çalışma Rutinim</h2>
+        <ol class="styled-ol">
+            <li>Akademik materyallerin ve literatürün takibi</li>
+            <li>Aktif kodlama pratiği ve algoritma çözümleri</li>
+            <li>Yeni nesil framework ve araçların araştırılması</li>
+            <li>Kişisel ve akademik projelerin iterasyonu</li>
+        </ol>
+    </div>
 
-        <section>
-            <h2>Günlük Çalışma Rutinim</h2>
-            <ol>
-                <li>Ders materyallerini gözden geçirmek</li>
-                <li>Kodlama pratiği yapmak</li>
-                <li>Yeni teknolojiler araştırmak</li>
-                <li>Proje geliştirmek</li>
-            </ol>
-        </section>
+    <div class="section">
+        <h2>Web Teknolojileri Sözlüğü</h2>
+        <dl>
+            <dt>HTML</dt>
+            <dd>Web sayfalarının yapısal iskeletini kuran standart işaretleme dili.</dd>
+            
+            <dt>CSS</dt>
+            <dd>Dijital arayüzlerin görsel estetiğini ve yerleşimini tanımlayan stil dili.</dd>
+            
+            <dt>JavaScript</dt>
+            <dd>Web ekosistemine dinamizm ve kullanıcı etkileşimi katan temel motor.</dd>
+        </dl>
+    </div>
 
-        <section>
-            <h2>Web Teknolojileri Sözlüğü</h2>
-            <dl>
-                <dt>HTML</dt>
-                <dd>Web sayfalarının iskeletini oluşturan işaretleme dilidir.</dd>
-                
-                <dt>CSS</dt>
-                <dd>Web sayfalarının görsel tasarımını düzenlemek için kullanılır.</dd>
-                
-                <dt>JavaScript</dt>
-                <dd>Web sayfalarına etkileşim kazandıran programlama dilidir.</dd>
-            </dl>
-        </section>
+    <a href="index.html" class="back-link">← Ana sayfaya geri dön</a>
+</div>
 
-        <a href="index.html" class="back-link">&larr; Ana sayfaya geri dön</a>
-    </main>
+<footer>
+    <p>&copy; 2026 <strong>Nuran Ferhan Kasap</strong> · Marmara Üniversitesi · Web Programlama</p>
+</footer>
 
-    <footer>
-        <p>&copy; 2026 Web Programlama Dersi | Nuran Ferhan</p>
-    </footer>
+<script>
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d');
+    let W, H, particles = [];
+    function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+    resize(); window.addEventListener('resize', resize);
+    class Particle {
+        constructor() { this.reset(); }
+        reset() { this.x=Math.random()*W; this.y=Math.random()*H; this.r=Math.random()*1.2+0.3; this.alpha=Math.random()*0.5+0.1; this.vx=(Math.random()-0.5)*0.2; this.vy=(Math.random()-0.5)*0.2; this.color=Math.random()>0.5?'0,210,255':'167,139,250'; }
+        update() { this.x+=this.vx; this.y+=this.vy; if(this.x<0||this.x>W||this.y<0||this.y>H) this.reset(); }
+        draw() { ctx.beginPath(); ctx.arc(this.x,this.y,this.r,0,Math.PI*2); ctx.fillStyle=`rgba(${this.color},${this.alpha})`; ctx.fill(); }
+    }
+    for(let i=0;i<120;i++) particles.push(new Particle());
+    function drawConnections() {
+        for(let i=0;i<particles.length;i++) for(let j=i+1;j<particles.length;j++) {
+            const dx=particles[i].x-particles[j].x, dy=particles[i].y-particles[j].y, d=Math.sqrt(dx*dx+dy*dy);
+            if(d<100){ ctx.beginPath(); ctx.moveTo(particles[i].x,particles[i].y); ctx.lineTo(particles[j].x,particles[j].y); ctx.strokeStyle=`rgba(0,210,255,${0.06*(1-d/100)})`; ctx.lineWidth=0.5; ctx.stroke(); }
+        }
+    }
+    function animate() {
+        ctx.clearRect(0,0,W,H);
+        const g=ctx.createRadialGradient(W/2,H/2,0,W/2,H/2,W*0.8);
+        g.addColorStop(0,'rgba(48,43,99,0.15)'); g.addColorStop(1,'transparent');
+        ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
+        drawConnections(); particles.forEach(p=>{p.update();p.draw();}); requestAnimationFrame(animate);
+    }
+    animate();
+    const dot=document.getElementById('cursorDot'), ring=document.getElementById('cursorRing');
+    let mx=0,my=0,rx=0,ry=0;
+    document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+    (function move(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;dot.style.left=mx+'px';dot.style.top=my+'px';ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(move);})();
+</script>
 </body>
 </html>
