@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nuran Ferhan | Portfolio</title>
-    <!-- Modern Fontlar -->
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&family=Montserrat:wght@800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -37,7 +37,6 @@
             line-height: 1.6;
         }
 
-        /* Arka plan süslemesi için hafif blur daireler */
         body::before {
             content: "";
             position: fixed;
@@ -49,9 +48,7 @@
             filter: blur(120px);
             opacity: 0.15;
             z-index: -1;
-        }
-
-        /* Navigasyon */
+  
         nav {
             background: rgba(15, 23, 42, 0.8);
             backdrop-filter: blur(12px);
@@ -87,7 +84,6 @@
             color: var(--accent-blue);
         }
 
-        /* Hero Alanı */
         .hero-section {
             flex: 1;
             display: flex;
@@ -136,7 +132,6 @@
             font-weight: 300;
         }
 
-        /* Buton Tasarımı */
         .btn-homework {
             display: inline-flex;
             align-items: center;
@@ -176,7 +171,6 @@
             letter-spacing: 1px;
         }
 
-        /* Mobil Uyumluluk */
         @media (max-width: 768px) {
             .portfolio-card { padding: 3rem 1.5rem; }
             nav ul { height: auto; padding: 1.5rem 0; flex-direction: column; gap: 10px; }
