@@ -1,15 +1,8 @@
-/* ================================================================
-   hafta7.css  –  WP Lab Hafta 7 Etkinlik Kayıt Sayfası
-   Ana görünüm Bootstrap üzerinden kurulmuş; bu dosya
-   yalnızca özelleştirme ve tema değişkenleri içerir.
-================================================================ */
 
-/* ── Fonts & Base ─────────────────────────────────────────── */
 :root {
   --font-display: 'Outfit', sans-serif;
   --font-body: 'DM Sans', sans-serif;
 
-  /* Light Theme */
   --bg-page: #f6f7fb;
   --bg-card: #ffffff;
   --bg-nav: #111418;
@@ -63,7 +56,6 @@ body {
   transition: background .3s ease, color .3s ease;
 }
 
-/* ── Navbar ───────────────────────────────────────────────── */
 #mainNav {
   background: var(--bg-nav);
   height: var(--nav-height);
@@ -94,7 +86,6 @@ body {
   filter: invert(1);
 }
 
-/* ── Theme Button ─────────────────────────────────────────── */
 .btn-theme {
   background: rgba(255,255,255,.08);
   border: 1px solid rgba(255,255,255,.15);
@@ -110,7 +101,6 @@ body {
   color: #fff;
 }
 
-/* ── Hero ─────────────────────────────────────────────────── */
 .hero-section {
   background: var(--bg-page);
   padding: 72px 0 80px;
@@ -154,7 +144,6 @@ body {
   max-width: 520px;
 }
 
-/* Info Card in Hero */
 .info-card-hero {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
@@ -183,7 +172,6 @@ body {
   margin-bottom: .45rem;
 }
 
-/* ── Buttons ──────────────────────────────────────────────── */
 .btn-primary-custom {
   background: var(--accent-blue) !important;
   border: 1.5px solid var(--accent-blue) !important;
@@ -203,7 +191,6 @@ body {
   transform: translateY(-1px);
   box-shadow: none !important;
 }
-/* Çerçeveli buton — form alanı (temaya duyarlı) */
 .btn-outline-form {
   background: transparent !important;
   border: 1.5px solid var(--border-color) !important;
@@ -222,7 +209,6 @@ body {
   color: var(--text-primary) !important;
   box-shadow: none !important;
 }
-/* Çerçeveli buton — hero (temaya duyarlı) */
 .btn-outline-custom {
   background: transparent !important;
   border: 1.5px solid var(--border-color) !important;
@@ -257,7 +243,6 @@ body {
   color: var(--text-primary);
 }
 
-/* ── Section Titles ───────────────────────────────────────── */
 .section-title {
   font-family: var(--font-display);
   font-weight: 800;
@@ -269,7 +254,6 @@ body {
   font-size: .925rem;
 }
 
-/* ── Cards ────────────────────────────────────────────────── */
 .section-cards { background: var(--bg-page); }
 .card-custom {
   background: var(--bg-card);
@@ -306,7 +290,6 @@ body {
   line-height: 1.65;
 }
 
-/* ── Info Section ─────────────────────────────────────────── */
 .section-info { background: var(--bg-page); }
 .info-block {
   background: var(--bg-info);
@@ -348,7 +331,6 @@ body {
   line-height: 1.6;
 }
 
-/* ── Form Section ─────────────────────────────────────────── */
 .section-form { background: var(--bg-page); }
 .form-card {
   background: var(--bg-form);
@@ -374,7 +356,6 @@ body {
   border-radius: 6px;
   white-space: nowrap;
 }
-/* Bootstrap overrides for dark theme */
 .form-control, .form-select {
   background: var(--bg-page);
   border: 1.5px solid var(--border-color);
@@ -399,7 +380,6 @@ body {
 .form-check-input:checked { background-color: var(--accent-blue); border-color: var(--accent-blue); }
 .form-check-label { font-size: .85rem; color: var(--text-secondary); }
 
-/* ── Result Area ──────────────────────────────────────────── */
 .result-placeholder {
   background: var(--bg-result);
   border: 1.5px dashed var(--accent-blue);
@@ -437,7 +417,6 @@ body {
 .result-key { color: var(--text-muted); font-weight: 500; }
 .result-val { color: var(--text-primary); font-weight: 600; }
 
-/* ── Footer ───────────────────────────────────────────────── */
 .footer-section { background: var(--bg-footer); }
 .footer-brand {
   font-family: var(--font-display);
@@ -450,13 +429,11 @@ body {
   color: var(--text-footer);
 }
 
-/* ── Alert (validation) ───────────────────────────────────── */
 .alert-validation {
   border-radius: 10px;
   font-size: .875rem;
 }
 
-/* ── Transitions ──────────────────────────────────────────── */
 .form-card, .card-custom, .info-block, .form-card {
   transition: background .3s, border-color .3s;
 }
