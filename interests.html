@@ -94,6 +94,7 @@
             padding: 0.4rem 1rem;
             font-size: 0.85rem;
             font-weight: 500;
+            letter-spacing: 0.5px;
             border-radius: 6px;
             transition: all 0.25s;
         }
@@ -125,6 +126,7 @@
         .nav-social-link:hover {
             border-color: rgba(0,210,255,0.4);
             color: var(--accent-blue);
+            box-shadow: 0 0 15px rgba(0,210,255,0.15);
         }
 
         .nav-social-link svg { width: 16px; height: 16px; fill: currentColor; }
@@ -148,7 +150,7 @@
             font-weight: 800;
             font-size: clamp(2rem, 5vw, 3rem);
             margin-bottom: 1rem;
-            background: linear-gradient(90deg, var(--text), var(--muted));
+            background: linear-gradient(90deg, var(--accent-blue), #a78bfa);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -158,6 +160,7 @@
             font-size: 1.05rem;
             margin-bottom: 3rem;
             max-width: 600px;
+            line-height: 1.7;
         }
 
         .interests-grid {
@@ -169,11 +172,12 @@
         .interest-card {
             background: var(--glass);
             border: 1px solid var(--glass-border);
-            padding: 2rem;
+            padding: 2.5rem;
             border-radius: 20px;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(10px);
         }
 
         .interest-card::before {
@@ -196,29 +200,30 @@
         .interest-card h3 {
             font-family: 'Plus Jakarta Sans', sans-serif;
             color: var(--accent-blue);
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
+            font-size: 1.25rem;
             font-weight: 700;
+            letter-spacing: 0.5px;
         }
 
         .interest-card p {
-            color: var(--muted);
-            font-size: 0.9rem;
-            line-height: 1.7;
+            color: #c8cad6;
+            font-size: 0.95rem;
+            line-height: 1.8;
         }
 
         footer {
             position: relative;
             z-index: 1;
             text-align: center;
-            padding: 2rem;
+            padding: 2.5rem;
             color: var(--muted);
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             border-top: 1px solid var(--glass-border);
-            margin-top: 2rem;
+            margin-top: 3rem;
         }
 
-        footer a { color: var(--accent-blue); text-decoration: none; }
+        footer a { color: var(--accent-blue); text-decoration: none; font-weight: 600; }
 
         @media (max-width: 768px) {
             nav { padding: 0 1.2rem; }
@@ -276,7 +281,7 @@
 </main>
 
 <footer>
-    <p>&copy; 2026 <strong>Nuran Ferhan Kasap</strong> · Marmara Üniversitesi</p>
+    <p>&copy; 2026 <strong>Nuran Ferhan Kasap</strong> · Marmara Üniversitesi · <a href="https://github.com/nuranferhan" target="_blank">GitHub</a> · <a href="https://www.linkedin.com/in/nuran-ferhan/" target="_blank">LinkedIn</a></p>
 </footer>
 
 <script>
@@ -316,8 +321,32 @@ class Particle {
 
 for (let i = 0; i < 100; i++) particles.push(new Particle());
 
+function drawConnections() {
+    for (let i = 0; i < particles.length; i++) {
+        for (let j = i+1; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const d = Math.sqrt(dx*dx+dy*dy);
+            if (d < 100) {
+                ctx.beginPath();
+                ctx.moveTo(particles[i].x, particles[i].y);
+                ctx.lineTo(particles[j].x, particles[j].y);
+                ctx.strokeStyle = `rgba(0,210,255,${0.06*(1-d/100)})`;
+                ctx.lineWidth = 0.5;
+                ctx.stroke();
+            }
+        }
+    }
+}
+
 function animate() {
     ctx.clearRect(0,0,W,H);
+    const g = ctx.createRadialGradient(W/2,H/2,0,W/2,H/2,W*0.8);
+    g.addColorStop(0,'rgba(48,43,99,0.15)');
+    g.addColorStop(1,'transparent');
+    ctx.fillStyle = g;
+    ctx.fillRect(0,0,W,H);
+    drawConnections();
     particles.forEach(p => { p.update(); p.draw(); });
     requestAnimationFrame(animate);
 }
@@ -338,6 +367,11 @@ document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; });
 document.querySelectorAll('a, .interest-card').forEach(el => {
     el.addEventListener('mouseenter', () => { ring.style.transform='translate(-50%,-50%) scale(1.6)'; ring.style.opacity='0.5'; });
     el.addEventListener('mouseleave', () => { ring.style.transform='translate(-50%,-50%) scale(1)'; ring.style.opacity='1'; });
+});
+
+window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    nav.style.background = window.scrollY > 20 ? 'rgba(5,8,16,0.92)' : 'rgba(5,8,16,0.7)';
 });
 </script>
 </body>
