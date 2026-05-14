@@ -1,18 +1,4 @@
-/**
- * hafta7.js  –  WP Lab Hafta 7 JavaScript Etkileşimleri
- * İki temel işlev:
- *   1) Tema değiştirme (Açık / Koyu)
- *   2) Form verilerinden başvuru özeti üretme
- */
-
 'use strict';
-
-/* ════════════════════════════════════════════════════════════
-   1. TEMA DEĞİŞTİRME
-   - Tüm tema butonları (navbar + hero) aynı fonksiyonu tetikler.
-   - data-theme özelliği <html> üzerinde toggle edilir.
-   - Tercih localStorage'da saklanır.
-════════════════════════════════════════════════════════════ */
 
 const html        = document.documentElement;
 const themeToggle = document.getElementById('themeToggle');
@@ -20,7 +6,6 @@ const heroThemeBtn= document.getElementById('heroThemeBtn');
 const themeIcon   = document.getElementById('themeIcon');
 const themeLabel  = document.getElementById('themeLabel');
 
-/** Mevcut temayı UI'ya yansıtır. */
 function syncThemeUI() {
   const dark = html.getAttribute('data-theme') === 'dark';
 
@@ -36,7 +21,6 @@ function syncThemeUI() {
   }
 }
 
-/** Temayı değiştirir. */
 function toggleTheme() {
   const isDark = html.getAttribute('data-theme') === 'dark';
   html.setAttribute('data-theme', isDark ? 'light' : 'dark');
@@ -54,11 +38,6 @@ function toggleTheme() {
 
 if (themeToggle)  themeToggle.addEventListener('click', toggleTheme);
 if (heroThemeBtn) heroThemeBtn.addEventListener('click', toggleTheme);
-
-
-/* ════════════════════════════════════════════════════════════
-   2. FORM DOĞRULAMA & ÖZET ÜRETME
-════════════════════════════════════════════════════════════ */
 
 const form       = document.getElementById('applicationForm');
 const resultArea = document.getElementById('resultArea');
@@ -112,7 +91,6 @@ function renderSummary(data) {
   resultArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-/** XSS önlemi. */
 function escapeHtml(str) {
   return String(str)
     .replace(/&/g, '&amp;')
@@ -121,12 +99,10 @@ function escapeHtml(str) {
     .replace(/"/g, '&quot;');
 }
 
-/** Form submit olayı. */
 form.addEventListener('submit', function (e) {
-  e.preventDefault(); // Sayfa yenilenmesin
+  e.preventDefault();
   clearAlert();
 
-  // Değerleri al
   const fullName       = document.getElementById('fullName').value.trim();
   const email          = document.getElementById('email').value.trim();
   const department     = document.getElementById('department').value.trim();
@@ -136,7 +112,6 @@ form.addEventListener('submit', function (e) {
   const message        = document.getElementById('message').value.trim();
   const consent        = document.getElementById('consent').checked;
 
-  // ── Zorunlu alan kontrolleri ──
   if (!fullName) {
     showAlert('Lütfen <strong>Ad Soyad</strong> alanını doldurun.');
     return;
@@ -166,16 +141,13 @@ form.addEventListener('submit', function (e) {
     return;
   }
 
-  // ── Başarılı: özet üret ──
   renderSummary({ fullName, email, department, classYear, session, attendanceType, message });
 });
 
-/** Formu temizle. */
 resetBtn.addEventListener('click', function () {
   form.reset();
   clearAlert();
 
-  // Sonuç alanını başlangıca döndür
   resultArea.className = 'result-placeholder rounded-4 p-4 text-center';
   resultArea.innerHTML = `
     <i class="bi bi-hourglass-split result-icon"></i>
