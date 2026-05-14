@@ -46,10 +46,14 @@
             border: 1px solid rgba(0, 210, 255, 0.3);
         }
 
+        /* Buton Konteynırı Düzenlemesi */
         .flexbox-lab-btn-container {
+            display: block;
             text-align: center;
-            margin: 20px 0;
+            margin: 30px 0;
         }
+
+        /* Butonların genel stili */
         .flexbox-lab-btn {
             display: inline-block;
             padding: 12px 24px;
@@ -58,11 +62,19 @@
             text-decoration: none;
             border-radius: 5px;
             font-weight: bold;
-            font-size: 1.1em;
+            font-size: 1.05em;
             transition: background-color 0.3s;
+            margin: 10px; /* Butonlar arası yan ve alt boşluk */
+            min-width: 160px; /* Butonların hizalı durması için minimum genişlik */
         }
+
         .flexbox-lab-btn:hover {
             background-color: #27ae60;
+        }
+
+        /* Alt satıra geçişi zorlamak için ayırıcı */
+        .btn-row-break {
+            height: 10px; /* Satırlar arası ekstra dikey boşluk */
         }
     </style>
 </head>
@@ -90,34 +102,37 @@
             </nav>
 
             <header class="intro-text">
-                <p>Verilen benzer bir düzenle basit bir web sayfası oluşturun. CSS'in temel özelliklerini (<span>display</span>, <span>width</span>, <span>height</span>, <span>margin</span>, <span>padding</span>, <span>border</span>, selector) uygulayın. Sadece HTML5 + CSS3 kullanın, hazır framework kullanmak yasak (Bootstrap, Tailwind vb.).</p>
+                <p>Verilen benzer bir düzenle basit bir web sayfası oluşturun. CSS'in temel özelliklerini (<span>display</span>, <span>width</span>, <span>height</span>, <span>margin</span>, <span>padding</span>, <span>border</span>, selector) uygulayın.</p>
             </header>
 
             <div class="flexbox-lab-btn-container">
-                <a href="flexbox-lab/index.html" class="flexbox-lab-btn">Flexbox Ödevi</a>
-                <a href="lab-position.html" class="flexbox-lab-btn" style="background-color: #9b59b6; margin-left: 10px;">Position Ödevi</a>
-                <a href="contact.html" class="flexbox-lab-btn" style="background-color: #f39c12; margin-left: 10px;">Form Ödevi</a>
-                <a href="hafta6-1.html" class="flexbox-lab-btn" style="background-color: #3498db; margin-left: 10px;">Hafta 6 1</a>
-                <a href="hafta6-2.html" class="flexbox-lab-btn" style="background-color: #e67e22; margin-left: 10px;">Hafta 6 2</a>
-                <a href="hafta7.html" class="flexbox-lab-btn" style="background-color: #e74c3c; margin-left: 10px;">Hafta 7</a>
+                <div class="btn-row">
+                    <a href="flexbox-lab/index.html" class="flexbox-lab-btn">Flexbox Ödevi</a>
+                    <a href="lab-position.html" class="flexbox-lab-btn" style="background-color: #9b59b6;">Position Ödevi</a>
+                    <a href="contact.html" class="flexbox-lab-btn" style="background-color: #f39c12;">Form Ödevi</a>
+                </div>
+                
+                <div class="btn-row-break"></div> <div class="btn-row">
+                    <a href="hafta6-1.html" class="flexbox-lab-btn" style="background-color: #3498db;">Hafta 6 1</a>
+                    <a href="hafta6-2.html" class="flexbox-lab-btn" style="background-color: #e67e22;">Hafta 6 2</a>
+                    <a href="hafta7.html" class="flexbox-lab-btn" style="background-color: #e74c3c;">Hafta 7</a>
+                </div>
             </div>
 
             <main class="content-section">
                 <article class="box box-yellow">
                     <h3>İçerik</h3>
                     <p>Bu alanda örnek içerik metinleri bulunmaktadır. Css özellikleriyle bu metinler arasında <strong>boşluklar</strong> (line-height) ve hizalamalar (text-align) düzenlelleririz.</p>
-                    <p>Önce CSS ile kutuları / alanlari yan yana getirmeyi, ardından alt alta yerleştirmeyi öğrendik. Şimdi ise CSS seçicilerini kullanarak grup ve hiyerarşik seçimler yapmayı göreceğiz.</p>
                 </article>
 
                 <aside class="box box-blue">
                     <h3>Yan Menü / Bilgi</h3>
-                    <p>Bu alan yan menü veya bilgi kısmıdır. CSS ile genişlik (width), yükseklik (height), kenar boşlukları (margin/padding) ve kenarlık (border) özelliklerini kullanarak düzenleyebiliriz.</p>
-                    <p>Öğrendiklerimizi hiyerarşik ve grup seçicilerle uygulayıp farkii bölümlere stil verebiliriz.</p>
+                    <p>Bu alan yan menü veya bilgi kısmıdır. Genişlik, yükseklik ve kenar boşlukları gibi CSS özelliklerini burada test ediyoruz.</p>
                 </aside>
             </main>
 
             <footer class="footer">
-                <p>&copy; 2026 Nuran Ferhan Kasap | CSS Temel Örnek. Bu sayfa basit bir HTML+CSS alıştırmasıdır.</p>
+                <p>&copy; 2026 Nuran Ferhan Kasap | CSS Temel Örnek.</p>
             </footer>
         </div>
     </div>
