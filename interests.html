@@ -3,379 +3,228 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>İlgi Alanlarım | Nuran Ferhan</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+    <title>İlgi Alanlarım | NFK</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #050810;
+            --bg-dark: #050810;
+            --text: #f8fafc;
+            --muted: #94a3b8;
             --accent-blue: #00d2ff;
-            --accent-purple: #7b5ea7;
-            --text: #f0f0f0;
-            --muted: #8a8fa8;
-            --glass: rgba(255,255,255,0.04);
-            --glass-border: rgba(255,255,255,0.08);
+            --glass: rgba(15, 23, 42, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.08);
         }
 
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
 
         body {
-            background: var(--bg);
+            background-color: var(--bg-dark);
             color: var(--text);
-            font-family: 'DM Sans', sans-serif;
-            min-height: 100vh;
+            line-height: 1.6;
             overflow-x: hidden;
         }
 
-        #bg-canvas {
-            position: fixed;
-            inset: 0;
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        .cursor-dot {
-            width: 6px; height: 6px;
-            background: var(--accent-blue);
-            border-radius: 50%;
-            position: fixed;
-            top: 0; left: 0;
-            pointer-events: none;
-            z-index: 9999;
-            transform: translate(-50%,-50%);
-        }
-        .cursor-ring {
-            width: 32px; height: 32px;
-            border: 1.5px solid rgba(0,210,255,0.5);
-            border-radius: 50%;
-            position: fixed;
-            top: 0; left: 0;
-            pointer-events: none;
-            z-index: 9998;
-            transform: translate(-50%,-50%);
-            transition: all 0.15s ease;
-        }
-
-        /* NAV */
         nav {
             position: fixed;
-            top: 0; left: 0; right: 0;
+            top: 0;
+            left: 0;
+            right: 0;
             z-index: 1000;
-            padding: 0 3rem;
             height: 72px;
+            background: rgba(5, 8, 16, 0.7);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: rgba(5,8,16,0.7);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--glass-border);
         }
 
         .nav-logo {
-            font-family: 'Plus Jakarta Sans', sans-serif;
             font-weight: 800;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             background: linear-gradient(90deg, var(--accent-blue), #a78bfa);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-decoration: none;
+            flex: 1;
         }
 
-        nav ul { list-style: none; display: flex; gap: 0.2rem; }
-
-        nav ul li a {
-            color: var(--muted);
-            text-decoration: none;
-            padding: 0.4rem 1rem;
-            font-size: 0.85rem;
-            font-weight: 500;
-            border-radius: 6px;
-            transition: all 0.25s;
-        }
-
-        nav ul li a:hover { color: var(--text); background: var(--glass); }
-        nav ul li a.active { color: var(--accent-blue); }
-
-        /* PAGE WRAPPER */
-        .page-wrapper {
-            position: relative;
-            z-index: 1;
-            max-width: 860px;
-            margin: 0 auto;
-            padding: 120px 2rem 5rem;
-        }
-
-        .page-header {
-            margin-bottom: 3rem;
-            animation: fadeUp 0.8s ease both;
-        }
-
-        .page-header .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.35rem 0.9rem;
-            background: rgba(0,210,255,0.08);
-            border: 1px solid rgba(0,210,255,0.2);
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            color: var(--accent-blue);
-            margin-bottom: 1.2rem;
-        }
-
-        .page-header h1 {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 800;
-            font-size: clamp(2rem, 4vw, 3rem);
-            letter-spacing: -0.5px;
-            margin-bottom: 0.75rem;
-            background: linear-gradient(90deg, var(--accent-blue), #a78bfa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        @keyframes fadeUp {
-            from { opacity:0; transform: translateY(24px); }
-            to   { opacity:1; transform: translateY(0); }
-        }
-
-        .section {
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            padding: 2.2rem;
-            margin-bottom: 1.5rem;
-            animation: fadeUp 0.8s ease both;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .section:nth-child(2) { animation-delay: 0.1s; }
-        .section:nth-child(3) { animation-delay: 0.2s; }
-        .section:nth-child(4) { animation-delay: 0.3s; }
-
-        .section h2 {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 700;
-            font-size: 1.1rem;
-            color: var(--accent-blue);
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-        }
-
-        .section h2::before {
-            content: '';
-            display: block;
-            width: 3px;
-            height: 1.2em;
-            background: linear-gradient(to bottom, var(--accent-blue), var(--accent-purple));
-            border-radius: 2px;
-        }
-
-        .styled-list, .styled-ol {
+        .nav-links {
             list-style: none;
             display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
+            gap: 1.5rem;
+            justify-content: center;
+            flex: 2;
         }
 
-        .styled-list li {
+        .nav-links li a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0.8rem;
+            border-radius: 8px;
+        }
+
+        .nav-links li a:hover {
+            color: var(--text);
+            background: var(--glass);
+        }
+
+        .nav-links li a.active {
+            color: var(--accent-blue);
+        }
+
+        .nav-socials {
             display: flex;
-            align-items: flex-start;
             gap: 0.8rem;
-            color: #c8cad6;
+            justify-content: flex-end;
+            flex: 1;
+        }
+
+        .nav-social-link {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--muted);
+            transition: all 0.3s ease;
+        }
+
+        .nav-social-link svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        .nav-social-link:hover {
+            color: var(--accent-blue);
+            border-color: rgba(0, 210, 255, 0.3);
+            background: rgba(0, 210, 255, 0.05);
+            transform: translateY(-2px);
+        }
+
+        main {
+            padding-top: 120px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        .header {
+            margin-bottom: 4rem;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 5rem;
+        }
+
+        .interest-card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            padding: 2rem;
+            border-radius: 20px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .interest-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-blue);
+        }
+
+        .interest-card h3 {
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .interest-card p {
+            color: var(--muted);
             font-size: 0.95rem;
         }
 
-        .styled-list li::before {
-            content: '';
-            width: 6px; height: 6px;
-            background: var(--accent-blue);
-            border-radius: 50%;
-            margin-top: 0.6rem;
-            flex-shrink: 0;
-        }
-
-        .styled-list ul {
-            list-style: none;
-            margin-top: 0.5rem;
-            padding-left: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            gap: 0.4rem;
-        }
-
-        .styled-list ul li::before { background: var(--accent-purple); }
-
-        .styled-ol { counter-reset: item; }
-        .styled-ol li {
-            display: flex;
-            gap: 1rem;
-            color: #c8cad6;
-            counter-increment: item;
-        }
-        .styled-ol li::before {
-            content: counter(item);
-            width: 24px; height: 24px;
-            background: rgba(0,210,255,0.1);
-            border: 1px solid rgba(0,210,255,0.2);
-            color: var(--accent-blue);
-            font-size: 0.75rem;
-            font-weight: 800;
-            display: flex; align-items: center; justify-content: center;
-            border-radius: 6px;
-            flex-shrink: 0;
-        }
-
-        dt {
-            color: var(--accent-blue);
-            font-weight: 700;
-            font-size: 1rem;
-            margin-top: 1.2rem;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
-        dd {
-            color: var(--muted);
-            font-size: 0.9rem;
-            margin-left: 0;
-            padding-left: 1rem;
-            border-left: 1px solid var(--glass-border);
-            margin-top: 0.3rem;
-            font-style: italic;
-        }
-
-        .back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--muted);
-            text-decoration: none;
-            font-size: 0.85rem;
-            margin-top: 2rem;
-            transition: color 0.2s;
-        }
-        .back-link:hover { color: var(--accent-blue); }
-
-        footer {
-            text-align: center;
-            padding: 3rem;
-            color: var(--muted);
-            font-size: 0.8rem;
-            border-top: 1px solid var(--glass-border);
-            backdrop-filter: blur(10px);
-        }
-
-        @media (max-width: 768px) {
-            nav { padding: 0 1.5rem; }
-            .page-wrapper { padding: 100px 1.5rem 4rem; }
+        @media (max-width: 992px) {
+            .nav-container { padding: 0 1.5rem; }
+            .nav-socials { display: none; }
+            .nav-links { gap: 0.5rem; }
         }
     </style>
 </head>
 <body>
 
-<canvas id="bg-canvas"></canvas>
-<div class="cursor-dot" id="cursorDot"></div>
-<div class="cursor-ring" id="cursorRing"></div>
-
-<nav>
-    <a href="index.html" class="nav-logo">NFK</a>
-    <ul>
-        <li><a href="index.html">Ana Sayfa</a></li>
-        <li><a href="about.html">Hakkımda</a></li>
-        <li><a href="interests.html" class="active">İlgi Alanlarım</a></li>
-        <li><a href="contact.html">İletişim</a></li>
-    </ul>
-</nav>
-
-<div class="page-wrapper">
-    <div class="page-header">
-        <div class="badge">Keşfet</div>
-        <h1>İlgi Alanlarım</h1>
-        <p>Sürekli öğrenen bir mühendis adayının teknoloji odağı</p>
-    </div>
-
-    <div class="section">
-        <h2>Teknoloji Odak Noktalarım</h2>
-        <ul class="styled-list">
-            <li>Modern Web Geliştirme (Frontend & Backend)</li>
-            <li>Yapay Zekâ ve Veri Madenciliği Uygulamaları</li>
-            <li>Mobil Uygulama Mimarileri</li>
-            <li>
-                Öğrenme Yolculuğumdaki Teknolojiler:
-                <ul>
-                    <li>React & Modern JavaScript</li>
-                    <li>ASP.NET Core Ekosistemi</li>
-                    <li>Flutter ile Cross-Platform Geliştirme</li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-
-    <div class="section">
-        <h2>Günlük Çalışma Rutinim</h2>
-        <ol class="styled-ol">
-            <li>Akademik materyallerin ve literatürün takibi</li>
-            <li>Aktif kodlama pratiği ve algoritma çözümleri</li>
-            <li>Yeni nesil framework ve araçların araştırılması</li>
-            <li>Kişisel ve akademik projelerin iterasyonu</li>
-        </ol>
-    </div>
-
-    <div class="section">
-        <h2>Web Teknolojileri Sözlüğü</h2>
-        <dl>
-            <dt>HTML</dt>
-            <dd>Web sayfalarının yapısal iskeletini kuran standart işaretleme dili.</dd>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">NFK</a>
             
-            <dt>CSS</dt>
-            <dd>Dijital arayüzlerin görsel estetiğini ve yerleşimini tanımlayan stil dili.</dd>
-            
-            <dt>JavaScript</dt>
-            <dd>Web ekosistemine dinamizm ve kullanıcı etkileşimi katan temel motor.</dd>
-        </dl>
-    </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li><a href="about.html">Hakkımda</a></li>
+                <li><a href="interests.html" class="active">İlgi Alanlarım</a></li>
+                <li><a href="contact.html">İletişim</a></li>
+            </ul>
 
-    <a href="index.html" class="back-link">← Ana sayfaya geri dön</a>
-</div>
+            <div class="nav-socials">
+                <a href="https://github.com/nuranferhan" target="_blank" class="nav-social-link" title="GitHub">
+                    <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.04c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58C20.57 21.8 24 17.3 24 12 24 5.37 18.63 0 12 0z"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/nuran-ferhan/" target="_blank" class="nav-social-link" title="LinkedIn">
+                    <svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46C23.2 24 24 23.23 24 22.28V1.72C24 .77 23.2 0 22.23 0z"/></svg>
+                </a>
+            </div>
+        </div>
+    </nav>
 
-<footer>
-    <p>&copy; 2026 <strong>Nuran Ferhan Kasap</strong> · Marmara Üniversitesi · Web Programlama</p>
-</footer>
+    <main>
+        <section class="header">
+            <h1>İlgi Alanlarım</h1>
+            <p>Teknoloji ve yazılım dünyasında odaklandığım başlıca konular.</p>
+        </section>
 
-<script>
-    const canvas = document.getElementById('bg-canvas');
-    const ctx = canvas.getContext('2d');
-    let W, H, particles = [];
-    function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
-    resize(); window.addEventListener('resize', resize);
-    class Particle {
-        constructor() { this.reset(); }
-        reset() { this.x=Math.random()*W; this.y=Math.random()*H; this.r=Math.random()*1.2+0.3; this.alpha=Math.random()*0.5+0.1; this.vx=(Math.random()-0.5)*0.2; this.vy=(Math.random()-0.5)*0.2; this.color=Math.random()>0.5?'0,210,255':'167,139,250'; }
-        update() { this.x+=this.vx; this.y+=this.vy; if(this.x<0||this.x>W||this.y<0||this.y>H) this.reset(); }
-        draw() { ctx.beginPath(); ctx.arc(this.x,this.y,this.r,0,Math.PI*2); ctx.fillStyle=`rgba(${this.color},${this.alpha})`; ctx.fill(); }
-    }
-    for(let i=0;i<120;i++) particles.push(new Particle());
-    function drawConnections() {
-        for(let i=0;i<particles.length;i++) for(let j=i+1;j<particles.length;j++) {
-            const dx=particles[i].x-particles[j].x, dy=particles[i].y-particles[j].y, d=Math.sqrt(dx*dx+dy*dy);
-            if(d<100){ ctx.beginPath(); ctx.moveTo(particles[i].x,particles[i].y); ctx.lineTo(particles[j].x,particles[j].y); ctx.strokeStyle=`rgba(0,210,255,${0.06*(1-d/100)})`; ctx.lineWidth=0.5; ctx.stroke(); }
-        }
-    }
-    function animate() {
-        ctx.clearRect(0,0,W,H);
-        const g=ctx.createRadialGradient(W/2,H/2,0,W/2,H/2,W*0.8);
-        g.addColorStop(0,'rgba(48,43,99,0.15)'); g.addColorStop(1,'transparent');
-        ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
-        drawConnections(); particles.forEach(p=>{p.update();p.draw();}); requestAnimationFrame(animate);
-    }
-    animate();
-    const dot=document.getElementById('cursorDot'), ring=document.getElementById('cursorRing');
-    let mx=0,my=0,rx=0,ry=0;
-    document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
-    (function move(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;dot.style.left=mx+'px';dot.style.top=my+'px';ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(move);})();
-</script>
+        <section class="interests-grid">
+            <div class="interest-card">
+                <h3>Sistem Programlama</h3>
+                <p>Linux/Unix kabukları, süreç yönetimi ve RISC-V mimarisi üzerine çalışmalar yapıyorum.</p>
+            </div>
+            <div class="interest-card">
+                <h3>Web Geliştirme</h3>
+                <p>Modern arayüz teknolojileri, CSS mimarileri (Flexbox, Bootstrap) ve kullanıcı deneyimi odaklı projeler geliştiriyorum.</p>
+            </div>
+            <div class="interest-card">
+                <h3>Veri Madenciliği</h3>
+                <p>KNN, Random Forest gibi algoritmalarla sağlık ve tarım alanında öngörüsel analizler üzerine projeler yürütüyorum.</p>
+            </div>
+        </section>
+    </main>
+
 </body>
 </html>
