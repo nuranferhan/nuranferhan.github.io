@@ -14,6 +14,7 @@
             --muted: #8a8fa8;
             --glass: rgba(255,255,255,0.04);
             --glass-border: rgba(255,255,255,0.08);
+            --input-bg: rgba(255, 255, 255, 0.03);
         }
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -138,7 +139,7 @@
             z-index: 1;
             max-width: 800px;
             margin: 0 auto;
-            padding: 140px 2rem 5rem;
+            padding: 120px 2rem 5rem;
             animation: fadeUp 0.9s ease both;
         }
 
@@ -147,71 +148,131 @@
             to   { opacity:1; transform: translateY(0); }
         }
 
+        .form-container {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            padding: 3rem;
+            border-radius: 24px;
+            backdrop-filter: blur(10px);
+        }
+
         h1 {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
             background: linear-gradient(90deg, var(--accent-blue), #a78bfa);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .contact-desc {
+        .form-group { margin-bottom: 1.5rem; }
+
+        label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
             color: var(--muted);
-            margin-bottom: 3rem;
-            font-size: 1.1rem;
+            margin-bottom: 0.6rem;
+            letter-spacing: 0.5px;
         }
 
-        .contact-card {
-            background: var(--glass);
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            background: var(--input-bg);
             border: 1px solid var(--glass-border);
-            padding: 2.5rem;
-            border-radius: 24px;
-            display: grid;
-            gap: 2rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            text-decoration: none;
+            border-radius: 10px;
             color: var(--text);
+            font-family: inherit;
+            font-size: 0.9rem;
             transition: all 0.3s;
         }
 
-        .contact-item:hover {
-            transform: translateX(10px);
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+            background: rgba(255,255,255,0.06);
+            box-shadow: 0 0 15px rgba(0,210,255,0.1);
         }
 
-        .icon-box {
-            width: 50px;
-            height: 50px;
-            background: rgba(0,210,255,0.1);
-            border: 1px solid rgba(0,210,255,0.2);
-            border-radius: 12px;
+        .check-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .check-item {
             display: flex;
             align-items: center;
-            justify-content: center;
-            color: var(--accent-blue);
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--text);
+            cursor: pointer;
         }
 
-        .contact-info h4 {
+        input[type="checkbox"], input[type="radio"] {
+            accent-color: var(--accent-blue);
+            width: 16px; height: 16px;
+        }
+
+        input[type="file"] {
             font-size: 0.8rem;
             color: var(--muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.2rem;
         }
 
-        .contact-info p {
-            font-size: 1.1rem;
+        .btn-row {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn-submit {
+            flex: 2;
+            padding: 0.9rem;
+            background: linear-gradient(135deg, var(--accent-blue), #3b82f6);
+            border: none;
+            border-radius: 10px;
+            color: #050810;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 0 20px rgba(0,210,255,0.2);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(0,210,255,0.4);
+        }
+
+        .btn-reset {
+            flex: 1;
+            padding: 0.9rem;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            color: var(--text);
             font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-reset:hover {
+            background: rgba(255, 68, 68, 0.1);
+            border-color: rgba(255, 68, 68, 0.3);
         }
 
         @media (max-width: 992px) {
             nav { padding: 0 1.5rem; }
             nav ul { display: none; }
+            .form-container { padding: 1.5rem; }
+            .btn-row { flex-direction: column; }
         }
     </style>
 </head>
@@ -240,29 +301,58 @@
 </nav>
 
 <main>
-    <h1>İletişime Geçin</h1>
-    <p class="contact-desc">Projelerim hakkında konuşmak veya sadece merhaba demek için bana ulaşabilirsiniz.</p>
-    
-    <div class="contact-card">
-        <a href="mailto:nuranferhan.kasap@marun.edu.tr" class="contact-item">
-            <div class="icon-box">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+    <div class="form-container">
+        <h1>Detaylı İletişim Formu</h1>
+        <form action="#" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="fullname">Ad Soyad:</label>
+                <input type="text" id="fullname" name="fullname" placeholder="Adınızı ve soyadınızı girin..." required>
             </div>
-            <div class="contact-info">
-                <h4>E-posta</h4>
-                <p>nuranferhan.kasap@marun.edu.tr</p>
+            <div class="form-group">
+                <label for="email">E-posta Adresi:</label>
+                <input type="email" id="email" name="email" placeholder="ornek@mail.com" required>
             </div>
-        </a>
-
-        <div class="contact-item">
-            <div class="icon-box">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <div class="form-group">
+                <label for="track-pw">Başvuru Takip Şifresi:</label>
+                <input type="password" id="track-pw" name="track-pw" placeholder="••••••••">
             </div>
-            <div class="contact-info">
-                <h4>Konum</h4>
-                <p>İstanbul, Türkiye</p>
+            <div class="form-group">
+                <label>İletişim Tercihi:</label>
+                <div class="check-group">
+                    <label class="check-item"><input type="radio" name="preference" value="email"> Bana e-posta ile ulaşın</label>
+                    <label class="check-item"><input type="radio" name="preference" value="phone"> Bana telefonla ulaşın</label>
+                </div>
             </div>
-        </div>
+            <div class="form-group">
+                <label>İlgi Alanları / Yetenekler:</label>
+                <div class="check-group">
+                    <label class="check-item"><input type="checkbox" name="skill" value="html"> HTML</label>
+                    <label class="check-item"><input type="checkbox" name="skill" value="css"> CSS</label>
+                    <label class="check-item"><input type="checkbox" name="skill" value="algo"> Algoritma</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="subject">Konu:</label>
+                <select id="subject" name="subject">
+                    <option value="" disabled selected>Lütfen bir konu seçin...</option>
+                    <option value="job">İş Teklifi</option>
+                    <option value="question">Soru</option>
+                    <option value="feedback">Geri Bildirim</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="file-upload">Özgeçmiş (CV) veya Fotoğraf Yükle:</label>
+                <input type="file" id="file-upload" name="attachment">
+            </div>
+            <div class="form-group">
+                <label for="message">Mesajınız:</label>
+                <textarea id="message" name="message" rows="4" placeholder="Mesajınızı buraya yazabilirsiniz..."></textarea>
+            </div>
+            <div class="btn-row">
+                <button type="submit" class="btn-submit">Gönder</button>
+                <button type="reset" class="btn-reset">Temizle</button>
+            </div>
+        </form>
     </div>
 </main>
 
@@ -321,6 +411,11 @@
         ring.style.left = rx+'px'; ring.style.top= ry+'px';
         requestAnimationFrame(moveCursor);
     })();
+
+    document.querySelectorAll('button, a, input, select, textarea').forEach(el => {
+        el.addEventListener('mouseenter', () => { ring.style.transform='translate(-50%,-50%) scale(1.6)'; ring.style.opacity='0.5'; });
+        el.addEventListener('mouseleave', () => { ring.style.transform='translate(-50%,-50%) scale(1)'; ring.style.opacity='1'; });
+    });
 </script>
 </body>
 </html>
