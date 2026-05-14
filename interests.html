@@ -4,149 +4,166 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>İlgi Alanlarım | NFK</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #050810;
-            --text: #f8fafc;
-            --muted: #94a3b8;
+            --bg: #050810;
             --accent-blue: #00d2ff;
-            --glass: rgba(15, 23, 42, 0.6);
-            --glass-border: rgba(255, 255, 255, 0.08);
-        }
- 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            --accent-purple: #7b5ea7;
+            --text: #f0f0f0;
+            --muted: #8a8fa8;
+            --glass: rgba(255,255,255,0.04);
+            --glass-border: rgba(255,255,255,0.08);
         }
 
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+
         body {
-            background-color: var(--bg-dark);
+            background: var(--bg);
             color: var(--text);
-            line-height: 1.6;
+            font-family: 'DM Sans', sans-serif;
+            min-height: 100vh;
             overflow-x: hidden;
+        }
+
+        #bg-canvas {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .cursor-dot {
+            width: 6px; height: 6px;
+            background: var(--accent-blue);
+            border-radius: 50%;
+            position: fixed;
+            top: 0; left: 0;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%,-50%);
+            transition: transform 0.05s;
+        }
+        .cursor-ring {
+            width: 32px; height: 32px;
+            border: 1.5px solid rgba(0,210,255,0.5);
+            border-radius: 50%;
+            position: fixed;
+            top: 0; left: 0;
+            pointer-events: none;
+            z-index: 9998;
+            transform: translate(-50%,-50%);
+            transition: all 0.15s ease;
         }
 
         nav {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             z-index: 1000;
-            height: 72px;
-            background: rgba(5, 8, 16, 0.7);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--glass-border);
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-container {
-            width: 100%;
-            max-width: 1400px;
-            margin: 0 auto;
             padding: 0 3rem;
+            height: 72px;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            background: rgba(5,8,16,0.7);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
         }
 
         .nav-logo {
+            font-family: 'Plus Jakarta Sans', sans-serif;
             font-weight: 800;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             background: linear-gradient(90deg, var(--accent-blue), #a78bfa);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            letter-spacing: 0.5px;
             text-decoration: none;
-            flex: 1;
         }
 
-        .nav-links {
+        nav ul {
             list-style: none;
             display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex: 2;
+            gap: 0.2rem;
         }
 
-        .nav-links li a {
+        nav ul li a {
             color: var(--muted);
             text-decoration: none;
-            font-size: 0.9rem;
+            padding: 0.4rem 1rem;
+            font-size: 0.85rem;
             font-weight: 500;
-            transition: all 0.3s ease;
-            padding: 0.5rem 0.8rem;
-            border-radius: 8px;
+            border-radius: 6px;
+            transition: all 0.25s;
         }
 
-        .nav-links li a:hover {
+        nav ul li a:hover, nav ul li a.active {
             color: var(--text);
             background: var(--glass);
         }
 
-        .nav-links li a.active {
-            color: var(--accent-blue);
-        }
+        nav ul li a.active { color: var(--accent-blue); }
 
         .nav-socials {
             display: flex;
-            gap: 0.8rem;
-            justify-content: flex-end;
-            flex: 1;
+            gap: 0.75rem;
+            align-items: center;
         }
 
         .nav-social-link {
-            width: 38px;
-            height: 38px;
-            border-radius: 10px;
-            background: var(--glass);
+            width: 34px; height: 34px;
+            border-radius: 8px;
             border: 1px solid var(--glass-border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: flex; align-items: center; justify-content: center;
             color: var(--muted);
-            transition: all 0.3s ease;
-        }
-
-        .nav-social-link svg {
-            width: 18px;
-            height: 18px;
-            fill: currentColor;
+            text-decoration: none;
+            transition: all 0.25s;
+            background: var(--glass);
         }
 
         .nav-social-link:hover {
+            border-color: rgba(0,210,255,0.4);
             color: var(--accent-blue);
-            border-color: rgba(0, 210, 255, 0.3);
-            background: rgba(0, 210, 255, 0.05);
-            transform: translateY(-2px);
         }
+
+        .nav-social-link svg { width: 16px; height: 16px; fill: currentColor; }
 
         main {
-            padding-top: 120px;
+            position: relative;
+            z-index: 1;
             max-width: 1200px;
             margin: 0 auto;
-            padding-left: 2rem;
-            padding-right: 2rem;
+            padding: 120px 3rem 5rem;
+            animation: fadeUp 0.9s ease both;
         }
 
-        .header {
-            margin-bottom: 4rem;
+        @keyframes fadeUp {
+            from { opacity:0; transform: translateY(30px); }
+            to   { opacity:1; transform: translateY(0); }
         }
 
         .header h1 {
-            font-size: 2.5rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: clamp(2rem, 5vw, 3rem);
             margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--text), var(--muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header p {
+            color: var(--muted);
+            font-size: 1.05rem;
+            margin-bottom: 3rem;
+            max-width: 600px;
         }
 
         .interests-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 5rem;
+            gap: 1.5rem;
         }
 
         .interest-card {
@@ -154,77 +171,174 @@
             border: 1px solid var(--glass-border);
             padding: 2rem;
             border-radius: 20px;
-            transition: transform 0.3s ease, border-color 0.3s ease;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .interest-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0,210,255,0.05), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
         }
 
         .interest-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent-blue);
+            transform: translateY(-8px);
+            border-color: rgba(0,210,255,0.3);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
         }
 
+        .interest-card:hover::before { opacity: 1; }
+
         .interest-card h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
             color: var(--accent-blue);
             margin-bottom: 1rem;
-            font-size: 1.25rem;
+            font-size: 1.2rem;
+            font-weight: 700;
         }
 
         .interest-card p {
             color: var(--muted);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            line-height: 1.7;
         }
 
-        @media (max-width: 992px) {
-            .nav-container { padding: 0 1.5rem; }
+        footer {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 2rem;
+            color: var(--muted);
+            font-size: 0.8rem;
+            border-top: 1px solid var(--glass-border);
+            margin-top: 2rem;
+        }
+
+        footer a { color: var(--accent-blue); text-decoration: none; }
+
+        @media (max-width: 768px) {
+            nav { padding: 0 1.2rem; }
             .nav-socials { display: none; }
-            .nav-links { gap: 0.5rem; }
+            main { padding: 100px 1.5rem 3rem; }
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">NFK</a>
-            
-            <ul class="nav-links">
-                <li><a href="index.html">Ana Sayfa</a></li>
-                <li><a href="about.html">Hakkımda</a></li>
-                <li><a href="interests.html" class="active">İlgi Alanlarım</a></li>
-                <li><a href="contact.html">İletişim</a></li>
-            </ul>
+<canvas id="bg-canvas"></canvas>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 
-            <div class="nav-socials">
-                <a href="https://github.com/nuranferhan" target="_blank" class="nav-social-link" title="GitHub">
-                    <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.04c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58C20.57 21.8 24 17.3 24 12 24 5.37 18.63 0 12 0z"/></svg>
-                </a>
-                <a href="https://www.linkedin.com/in/nuran-ferhan/" target="_blank" class="nav-social-link" title="LinkedIn">
-                    <svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46C23.2 24 24 23.23 24 22.28V1.72C24 .77 23.2 0 22.23 0z"/></svg>
-                </a>
-            </div>
+<nav>
+    <a href="index.html" class="nav-logo">NFK</a>
+
+    <ul>
+        <li><a href="index.html">Ana Sayfa</a></li>
+        <li><a href="about.html">Hakkımda</a></li>
+        <li><a href="interests.html" class="active">İlgi Alanlarım</a></li>
+        <li><a href="contact.html">İletişim</a></li>
+    </ul>
+
+    <div class="nav-socials">
+        <a href="https://github.com/nuranferhan" target="_blank" class="nav-social-link" title="GitHub">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.04c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.13 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58C20.57 21.8 24 17.3 24 12 24 5.37 18.63 0 12 0z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/nuran-ferhan/" target="_blank" class="nav-social-link" title="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46C23.2 24 24 23.23 24 22.28V1.72C24 .77 23.2 0 22.23 0z"/></svg>
+        </a>
+    </div>
+</nav>
+
+<main>
+    <section class="header">
+        <h1>İlgi Alanlarım</h1>
+        <p>Teknoloji ve yazılım dünyasında odaklandığım başlıca konular ve derinleştiğim uzmanlık alanları.</p>
+    </section>
+
+    <section class="interests-grid">
+        <div class="interest-card">
+            <h3>Sistem Programlama</h3>
+            <p>Linux/Unix kabukları, süreç yönetimi ve RISC-V mimarisi üzerine çalışmalar yapıyorum. Bellek yönetimi ve alt seviye sistem optimizasyonu ilgimi çekiyor.</p>
         </div>
-    </nav>
+        <div class="interest-card">
+            <h3>Web Geliştirme</h3>
+            <p>Modern arayüz teknolojileri, CSS mimarileri ve kullanıcı deneyimi odaklı projeler geliştiriyorum. Responsive ve yüksek performanslı web uygulamaları üzerine odaklıyım.</p>
+        </div>
+        <div class="interest-card">
+            <h3>Veri Madenciliği</h3>
+            <p>Makine öğrenmesi algoritmalarıyla sağlık ve tarım alanında öngörüsel analizler yürütüyorum. Veriden anlamlı sonuçlar çıkarmak ve modellemek en büyük tutkum.</p>
+        </div>
+    </section>
+</main>
 
-    <main>
-        <section class="header">
-            <h1>İlgi Alanlarım</h1>
-            <p>Teknoloji ve yazılım dünyasında odaklandığım başlıca konular.</p>
-        </section>
+<footer>
+    <p>&copy; 2026 <strong>Nuran Ferhan Kasap</strong> · Marmara Üniversitesi</p>
+</footer>
 
-        <section class="interests-grid">
-            <div class="interest-card">
-                <h3>Sistem Programlama</h3>
-                <p>Linux/Unix kabukları, süreç yönetimi ve RISC-V mimarisi üzerine çalışmalar yapıyorum.</p>
-            </div>
-            <div class="interest-card">
-                <h3>Web Geliştirme</h3>
-                <p>Modern arayüz teknolojileri, CSS mimarileri (Flexbox, Bootstrap) ve kullanıcı deneyimi odaklı projeler geliştiriyorum.</p>
-            </div>
-            <div class="interest-card">
-                <h3>Veri Madenciliği</h3>
-                <p>KNN, Random Forest gibi algoritmalarla sağlık ve tarım alanında öngörüsel analizler üzerine projeler yürütüyorum.</p>
-            </div>
-        </section>
-    </main>
+<script>
+const canvas = document.getElementById('bg-canvas');
+const ctx = canvas.getContext('2d');
+let W, H, particles = [];
 
+function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+class Particle {
+    constructor() { this.reset(); }
+    reset() {
+        this.x = Math.random() * W;
+        this.y = Math.random() * H;
+        this.r = Math.random() * 1.2 + 0.3;
+        this.alpha = Math.random() * 0.5 + 0.1;
+        this.vx = (Math.random() - 0.5) * 0.2;
+        this.vy = (Math.random() - 0.5) * 0.2;
+        this.color = Math.random() > 0.5 ? '0,210,255' : '167,139,250';
+    }
+    update() {
+        this.x += this.vx; this.y += this.vy;
+        if (this.x < 0 || this.x > W || this.y < 0 || this.y > H) this.reset();
+    }
+    draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.r, 0, Math.PI*2);
+        ctx.fillStyle = `rgba(${this.color},${this.alpha})`;
+        ctx.fill();
+    }
+}
+
+for (let i = 0; i < 100; i++) particles.push(new Particle());
+
+function animate() {
+    ctx.clearRect(0,0,W,H);
+    particles.forEach(p => { p.update(); p.draw(); });
+    requestAnimationFrame(animate);
+}
+animate();
+
+const dot = document.getElementById('cursorDot');
+const ring = document.getElementById('cursorRing');
+let mx=0, my=0, rx=0, ry=0;
+document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; });
+
+(function moveCursor(){
+    rx += (mx-rx)*0.12; ry += (my-ry)*0.12;
+    dot.style.left = mx+'px'; dot.style.top = my+'px';
+    ring.style.left = rx+'px'; ring.style.top= ry+'px';
+    requestAnimationFrame(moveCursor);
+})();
+
+document.querySelectorAll('a, .interest-card').forEach(el => {
+    el.addEventListener('mouseenter', () => { ring.style.transform='translate(-50%,-50%) scale(1.6)'; ring.style.opacity='0.5'; });
+    el.addEventListener('mouseleave', () => { ring.style.transform='translate(-50%,-50%) scale(1)'; ring.style.opacity='1'; });
+});
+</script>
 </body>
 </html>
