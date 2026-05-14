@@ -30,7 +30,6 @@
             overflow-x: hidden;
         }
 
-        /* ── CANVAS BG ── */
         #bg-canvas {
             position: fixed;
             inset: 0;
@@ -38,7 +37,6 @@
             pointer-events: none;
         }
 
-        /* ── CURSOR ── */
         .cursor-dot {
             width: 6px; height: 6px;
             background: var(--accent-blue);
@@ -62,7 +60,6 @@
             transition: all 0.15s ease;
         }
 
-        /* ── NAV ── */
         nav {
             position: fixed;
             top: 0; left: 0; right: 0;
@@ -136,7 +133,6 @@
 
         .nav-social-link svg { width: 16px; height: 16px; fill: currentColor; }
 
-        /* ── HERO ── */
         .hero {
             position: relative;
             min-height: 100vh;
@@ -264,7 +260,6 @@
             transform: translateY(-3px);
         }
 
-        /* ── STATS ROW ── */
         .hero-stats {
             display: flex;
             gap: 2rem;
@@ -289,8 +284,6 @@
             color: var(--muted);
             letter-spacing: 0.5px;
         }
-
-        /* ── CARD GRID (right side) ── */
         .card-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -353,7 +346,6 @@
             line-height: 1.6;
         }
 
-        /* Skills pill */
         .skills-row {
             display: flex;
             flex-wrap: wrap;
@@ -371,7 +363,6 @@
             color: var(--muted);
         }
 
-        /* ── FLOATING SCROLL HINT ── */
         .scroll-hint {
             position: absolute;
             bottom: 2.5rem;
@@ -401,7 +392,6 @@
             100% { transform: scaleY(0); transform-origin: bottom; opacity:0; }
         }
 
-        /* ── FOOTER ── */
         footer {
             position: relative;
             z-index: 1;
@@ -417,7 +407,6 @@
             text-decoration: none;
         }
 
-        /* ── MOBILE ── */
         @media (max-width: 768px) {
             nav { padding: 0 1.2rem; }
             .nav-socials { display: none; }
@@ -445,7 +434,6 @@
 <div class="cursor-dot" id="cursorDot"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
-<!-- NAV -->
 <nav>
     <span class="nav-logo">NFK</span>
 
@@ -466,11 +454,9 @@
     </div>
 </nav>
 
-<!-- HERO -->
 <main class="hero">
     <div class="hero-inner">
 
-        <!-- LEFT -->
         <div class="hero-left">
             <div class="badge">
                 <span class="badge-dot"></span>
@@ -505,7 +491,6 @@
 
         </div>
 
-        <!-- RIGHT CARDS -->
         <div class="hero-right">
             <div class="card-grid">
 
@@ -538,8 +523,8 @@
                     <h3>Web Programlama Ödevleri</h3>
                     <p>Ders kapsamında geliştirilen front-end projeleri, interaktif uygulamalar ve akademik çalışmalar.</p>
                     <div style="margin-top:0.9rem">
-                        <a href="laboratuvar.html" class="btn-primary" style="font-size:0.78rem; padding:0.55rem 1.1rem;">
-                            Projeleri İncele →
+                        <a href="https://nuranferhan.github.io/laboratuvar.html" class="btn-primary" style="font-size:0.78rem; padding:0.55rem 1.1rem; text-decoration: none; display: inline-block;">
+                        Ödevleri İncele →
                         </a>
                     </div>
                 </div>
@@ -563,7 +548,6 @@
 </footer>
 
 <script>
-// ── ANIMATED PARTICLE CANVAS ──
 const canvas = document.getElementById('bg-canvas');
 const ctx = canvas.getContext('2d');
 let W, H, particles = [];
@@ -600,7 +584,6 @@ class Particle {
 
 for (let i = 0; i < 120; i++) particles.push(new Particle());
 
-// draw connection lines
 function drawConnections() {
     for (let i = 0; i < particles.length; i++) {
         for (let j = i+1; j < particles.length; j++) {
@@ -621,7 +604,6 @@ function drawConnections() {
 
 function animate() {
     ctx.clearRect(0,0,W,H);
-    // subtle gradient overlay
     const g = ctx.createRadialGradient(W/2,H/2,0,W/2,H/2,W*0.8);
     g.addColorStop(0,'rgba(48,43,99,0.15)');
     g.addColorStop(1,'transparent');
@@ -634,7 +616,6 @@ function animate() {
 }
 animate();
 
-// ── CUSTOM CURSOR ──
 const dot  = document.getElementById('cursorDot');
 const ring = document.getElementById('cursorRing');
 let mx=0, my=0, rx=0, ry=0;
@@ -652,7 +633,6 @@ document.querySelectorAll('a, button').forEach(el => {
     el.addEventListener('mouseleave', () => { ring.style.transform='translate(-50%,-50%) scale(1)'; ring.style.opacity='1'; });
 });
 
-// ── SCROLL NAV ACTIVE ──
 window.addEventListener('scroll', () => {
     const nav = document.querySelector('nav');
     nav.style.background = window.scrollY > 20 ? 'rgba(5,8,16,0.92)' : 'rgba(5,8,16,0.7)';
