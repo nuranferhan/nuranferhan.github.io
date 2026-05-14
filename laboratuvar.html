@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratuvar Ana Sayfası</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 900px;
+            padding: 50px 40px;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .badge {
+            background-color: #e0ebff;
+            color: #2563eb;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #1e293b;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .description {
+            color: #64748b;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 35px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .main-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+
+        .btn-primary {
+            background-color: #2563eb;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+
+        .btn-secondary {
+            background-color: #e2e8f0;
+            color: #475569;
+            padding: 12px 28px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 15px;
+        }
+
+        .card {
+            background-color: white;
+            border: 1px solid #f1f5f9;
+            padding: 20px 15px;
+            border-radius: 16px;
+            text-decoration: none;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 110px;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .card span:first-child {
+            display: block;
+            color: #1e293b;
+            font-weight: 700;
+            font-size: 15px;
+            margin-bottom: 5px;
+        }
+
+        .card span:last-child {
+            display: block;
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .main-buttons {
+                flex-direction: column;
+            }
+            .grid-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="badge">Web Programlama Dersi</div>
+    
+    <h1>Laboratuvar Ana Sayfası</h1>
+    
+    <p class="description">
+        Bu sayfa GitHub Pages üzerinde yayınlanan laboratuvar uygulamalarına giriş için hazırlanmıştır. 
+        Aşağıdaki butondan hafta 7 uygulamasına geçebilirsiniz.
+    </p>
+
+    <div class="main-buttons">
+        <a href="https://nuranferhan.github.io/hafta7.html" class="btn-primary">Hafta 7 Uygulamasına Git</a>
+        <a href="#" class="btn-secondary">Diğer Haftalar</a>
+    </div>
+
+    <div class="grid-container">
+        <a href="https://nuranferhan.github.io/index.html" class="card">
+            <span>Hafta 1</span>
+            <span>GitHub Pages</span>
+        </a>
+
+        <a href="hafta2.html" class="card">
+            <span>Hafta 2</span>
+            <span>HTML + CSS</span>
+        </a>
+
+        <a href="https://nuranferhan.github.io/contact.html" class="card">
+            <span>Hafta 3</span>
+            <span>Form Yapıları</span>
+        </a>
+
+        <a href="https://nuranferhan.github.io/flexbox-lab/index.html" class="card">
+            <span>Hafta 4</span>
+            <span>Flexbox</span>
+        </a>
+
+        <a href="https://nuranferhan.github.io/lab-position.html" class="card">
+            <span>Hafta 5</span>
+            <span>Position</span>
+        </a>
+
+        <a href="https://nuranferhan.github.io/hafta6-1.html" class="card">
+            <span>Hafta 6 (1)</span>
+            <span>JavaScript</span>
+        </a>
+
+        <a href="https://nuranferhan.github.io/hafta6-2.html" class="card">
+            <span>Hafta 6 (2)</span>
+            <span>JavaScript</span>
+        </a>
+
+        <a href="https://nuranferhan.github.io/hafta7.html" class="card">
+            <span>Hafta 7</span>
+            <span>Bootstrap + JS</span>
+        </a>
+    </div>
+</div>
+
+</body>
+</html>
