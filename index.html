@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuran Ferhan | Portfolio</title>
+    <style>
+        :root {
+            --bg-color: #0f0c29;
+            --gradient: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            --accent-blue: #00d2ff;
+            --accent-purple: #9d50bb;
+            --text-color: #f0f0f0;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background: var(--gradient);
+            background-attachment: fixed;
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .portfolio-container {
+            text-align: center;
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            max-width: 600px;
+            width: 90%;
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid var(--accent-blue);
+            margin-bottom: 1.5rem;
+            object-fit: cover;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            margin-bottom: 2rem;
+            color: #d1d1d1;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .main-btn {
+            display: block;
+            padding: 15px 30px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .homework-btn {
+            background: linear-gradient(45deg, #2ecc71, #27ae60);
+            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+        }
+
+        .homework-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(46, 204, 113, 0.5);
+        }
+
+        .about-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--glass-border);
+        }
+
+        .about-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--accent-blue);
+        }
+
+        footer {
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="portfolio-container">
+        <h1>Nuran Ferhan Kasap</h1>
+        <p>Bilgisayar Mühendisliği Öğrencisi | Full Stack Geliştirici Adayı</p>
+        
+        <div class="btn-group">
+            <a href="about.html" class="main-btn about-btn">Kişisel Portfolyöm</a>
+            <a href="odevler.html" class="main-btn homework-btn">Web Programlama Ödevleri</a>
+        </div>
+
+        <footer>
+            &copy; 2026 Nuran Ferhan | Tüm Hakları Saklıdır.
+        </footer>
+    </div>
+
+</body>
+</html>
